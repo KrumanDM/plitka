@@ -1,0 +1,68 @@
+/* Стили для компонента Поиск */
+.search {
+    /* Выравнивание по центру */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .search-button {
+    /* Размер и цвет кнопки */
+    width: 100px;
+    height: 50px;
+    background-color: #0078d4;
+    color: white;
+    /* Границы и скругление углов */
+    border: none;
+    border-radius: 10px;
+    /* Текст и курсор */
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  /* Стили для компонента SearchForm */
+  .search-form {
+    /* Позиционирование и размер */
+    display: flex;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
+    /* Выравнивание по центру */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    
+    opacity: 0;
+  animation: ani 1.1s forwards;
+
+  z-index: 5;
+  }
+  @keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  
+  .search-input {
+    /* Размер и цвет поля ввода */
+    width: 85%;
+    height: 40px;
+    background-color: white;
+    color: black;
+    /* Границы и скругление углов */
+    border-color: white ;
+    /* Отступы и текст */
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  .close-button {
+    /* Размер и цвет кнопки */
+    background: transparent;
+    border-color: white ;
+  }
+  

@@ -1,0 +1,84 @@
+.formGroup{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 5px;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: normal;
+  
+   background-color: aliceblue;
+    /* Измените ширину на 50% */
+    width:50%;
+  
+}
+.loginContainer{
+   
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: normal;
+
+    
+}
+.labelField{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: normal;
+   
+}
+.input{
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+}
+.label{
+    font-family: Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: .875rem;
+    color: #000;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+.error{
+    font-family: Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: .875rem;
+    color: red;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+.button {
+    display: flex;
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    font-family: Helvetica,sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: .70313rem;
+    text-transform: uppercase;
+  }
