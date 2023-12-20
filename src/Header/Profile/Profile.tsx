@@ -70,8 +70,9 @@ const onSubmit = (values: LogInValues) => {
 export const Profile: React.FC = () => {
   return (<>
   <Header/>
-  <div className={s.loginContainer}>
-    <div className={s.login}>
+  <div className={s.loginMainContainer}>
+    
+     <div className={s.login}>
       
       <h1>Вход</h1>
       <Formik
@@ -105,6 +106,8 @@ export const Profile: React.FC = () => {
         )}
       </Formik>
     </div>
+  
     </div>
+    
     </>);
 };
