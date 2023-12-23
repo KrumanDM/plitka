@@ -15,9 +15,9 @@ export const Header = () => {
   const handleOpen = () => {
     setOpen(!open) // переключить open на противоположное значение
   }
-  
 
   return (
+    <div className={s.header}>
     <div className={s.headerContainer}>
       <div className={s.storeContainer}>
         <Clothing />
@@ -42,6 +42,7 @@ export const Header = () => {
           <ShoppingBasketOutlinedIcon/>
         </div>
       </div>
+    </div>
     </div>
   );
 };

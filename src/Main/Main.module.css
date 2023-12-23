@@ -1,3 +1,22 @@
 .mainContainer {
   height: 1500px;
 }
+
+.sliderContainer img {
+  width: 100%;  /* Ширина изображения будет равна ширине контейнера */
+  height: 1000px; /* Высота изображения будет автоматически подстроена, чтобы сохранить пропорции */
+}
+/* @media (min-width: 1021px)
+.sliderContainer {
+    padding-left: 1.75rem;
+} */
+/* .main-content-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1456px;
+  min-width: 320px;
+  padding-top: 0;
+  padding-right: 0;
+  margin: 0 auto;
+} */
