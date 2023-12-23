@@ -5,6 +5,10 @@ import { Clothing } from "./Clothing/Clothing";
 import s from "./Header.module.css";
 import SearchForm from "./Search/SearchForm";
 import { Skate } from "./Skate/Skate";
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
+
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -20,19 +24,23 @@ export const Header = () => {
         <Accessories />
         <Skate />
       </div>
-      <a className={s.logo} href="/#">
+      <a className={s.logo} href="/plitka">
         Plitka
       </a>
       
       <div className={s.userContainer}>
       <div onClick={()=>handleOpen()} className={s.searchContainer}>
           {open && <SearchForm handleOpen={handleOpen}/>}
-          Поиск
+          <SearchIcon />
         </div>
         <div className={s.profile}>
-        <Link to="/Profile">Профиль</Link>
+        <Link to="/Profile">
+          <AccountCircleIcon/>
+        </Link>
         </div>
-        <div className={s.busket}>Корзина</div>
+        <div className={s.busket}>
+          <ShoppingBasketOutlinedIcon/>
+        </div>
       </div>
     </div>
   );

@@ -8,9 +8,14 @@
   justify-content: space-between;
   align-items: center;
   align-content: normal;
-  height: 60px;
-  background-color: aqua;
+  height: 72px;
   
+  
+  box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    padding: 10px;
+    /* выше 2 параметра на затемнение снизу */
+    
   /* position: sticky;
   top: 0; */
 }
