@@ -1,7 +1,7 @@
 /* Стили для тега <a> */
 .clothingContainer a {
-    /* Добавляем нижнюю границу для ссылки */
-    border-bottom: 1px solid black;
+    
+    
     /* Убираем подчеркивание ссылки */
     text-decoration: none;
     /* Задаем цвет ссылки */

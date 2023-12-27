@@ -4,6 +4,7 @@ import "./SearchForm.css"; // Изменено с "./SearchForm.css"
 import closeIcon from "./closeOutline.svg";
 
 type SearchFormProps = {
+  open: boolean;
   handleOpen: () => void;
 };
 
@@ -49,10 +50,11 @@ const SearchForm = (props: SearchFormProps) => {
     };
   }, [props]);
 
-  return (
+  return (<>
+  {props.open && <div className="overlay" onClick={props.handleOpen}></div>}
     <form
       ref={formRef}
-      className="search-form"
+      className={`search-form ${props.open ? 'open' : ''}`}
       onSubmit={handleSubmit}
       onClick={handleClick}
     >
@@ -72,7 +74,7 @@ const SearchForm = (props: SearchFormProps) => {
         id={"hw5-menu-close"}
       />
     </form>
-  );
+    </>);
 };
 
 export default SearchForm;

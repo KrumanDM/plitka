@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Decks = () => {
   return (
-    <div className={s.sweatersContainer}>
+    <div className={s.decksContainer}>
       {/* Оборачиваем текст в компонент Link и указываем путь /skateboard */}
       <Link to="/decks">Decks</Link>
     </div>

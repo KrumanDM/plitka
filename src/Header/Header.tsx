@@ -16,6 +16,7 @@ export const Header = () => {
     setOpen(!open) // переключить open на противоположное значение
   }
 
+
   return (
     <div className={s.header}>
     <div className={s.headerContainer}>
@@ -30,7 +31,7 @@ export const Header = () => {
       
       <div className={s.userContainer}>
       <div onClick={()=>handleOpen()} className={s.searchContainer}>
-          {open && <SearchForm handleOpen={handleOpen}/>}
+          {open && <SearchForm open={open} handleOpen={handleOpen}/>}
           <SearchIcon />
         </div>
         <div className={s.profile}>

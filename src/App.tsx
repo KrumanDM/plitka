@@ -16,6 +16,7 @@ import { TrucksStorage } from "./Header/Skate/Trucks/TrucksStorage/TrucksStorage
 import { Profile } from "./Header/Profile/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+
 console.log("hi");
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/trucks" element={<TrucksStorage />} />
 
           <Route path="/profile" element={<Profile />}/>
+          
 
         </Routes>
       </BrowserRouter>

@@ -88,3 +88,20 @@
 .button:hover {
     opacity: 0.8;
 }
+.pepe1{
+    position: absolute;
+    left: 320px;
+    height:200px;
+
+}
+.pepe{
+    position: absolute;
+    left:935px;
+    height:255px;
+}
+.pepe2{
+    position: absolute;
+    left:560px;
+    top:340px;
+    height: 300px;
+}

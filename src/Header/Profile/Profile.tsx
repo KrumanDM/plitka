@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 
 
+
 interface LogInValues {
   // Define the values for the form fields
   email: string;
@@ -73,7 +74,11 @@ export const Profile: React.FC = () => {
   <div className={s.loginMainContainer}>
     
      <div className={s.login}>
-      
+     
+     <img className={s.pepe} alt={''} src={'https://usagif.com/wp-content/uploads/2021/4fh5wi/pepefrg-29.gif.webp'}></img>
+     <img className={s.pepe1} alt={''} src={'https://i.kym-cdn.com/photos/images/newsfeed/002/057/968/9ab.gif'}></img>
+     <img className={s.pepe2} alt={''} src={'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/d399b467eee78cf818adae90154f5a7b-1682266858/Preview/make-pepe-the-frog-emote-stickers-and-profile-pictures-for-twitch-or-discord.gif'}></img>
+
       <h1>Вход</h1>
       <Formik
       
@@ -106,6 +111,9 @@ export const Profile: React.FC = () => {
         )}
       </Formik>
     </div>
+
+    
+
   
     </div>
     

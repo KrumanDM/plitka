@@ -1,13 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Header } from "../../../Header";
+import s from './SocksStorage.module.css'
 
-export const SocksStorage = () => {
-  return (
-    <div>
-      <Header/>
-      <h1>Носки</h1>
-      {/* Добавляем тег img с атрибутом src, указывающим на url изображения */}
-      <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2thdGVib2FyZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Skateboard" />
+export const SocksStorage: React.FC = () => {
+
+  return (<>
+  <Header/>
+    <div className={s.sockMenu}>
+      <h1 className={s.pageTitle}>Socks</h1>
+     <div className={s.items}>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNPWHTQ_WHT_HERO?wid=800&hei=1004&fmt=jpeg&qlt=50&resMode=sharp2&op_usm=0.9,1.5,8,0'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VN000F0X_BLK_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+      <Link to="/Profile">
+      <img className={s.item1} alt={''} src={'https://images.vans.com/is/image/Vans/VNNHU0O_HU0_HERO?$PLP-IMAGE$'}></img>
+      </Link>
+     </div>
+    
     </div>
-  );
+    </>);
 };
+

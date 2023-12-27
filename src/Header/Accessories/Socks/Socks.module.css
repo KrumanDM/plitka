@@ -1,0 +1,4 @@
+.socksContainer:hover{
+    /* Добавляем нижнюю границу для ссылки */
+  border-bottom: 1px solid black;
+}
