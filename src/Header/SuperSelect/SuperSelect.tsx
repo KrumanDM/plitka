@@ -51,6 +51,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
             {...restProps}
         >
             {mappedOptions}
+            
         </select>
     )
 }

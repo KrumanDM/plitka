@@ -35,12 +35,14 @@ export const Header = () => {
           <SearchIcon />
         </div>
         <div className={s.profile}>
-        <Link to="/Profile">
+        <Link to="/profile">
           <AccountCircleIcon/>
         </Link>
         </div>
         <div className={s.busket}>
-          <ShoppingBasketOutlinedIcon/>
+        <Link to="/busket">
+            <ShoppingBasketOutlinedIcon/>
+            </Link>
         </div>
       </div>
     </div>
