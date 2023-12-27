@@ -15,6 +15,7 @@ import { ComplitesStorage } from "./Header/Skate/Complites/ComplitesStorage/Comp
 import { TrucksStorage } from "./Header/Skate/Trucks/TrucksStorage/TrucksStorage";
 import { Profile } from "./Header/Profile/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Busket } from "./Header/Bucket/Busket";
 
 
 console.log("hi");
@@ -40,7 +41,7 @@ function App() {
           <Route path="/trucks" element={<TrucksStorage />} />
 
           <Route path="/profile" element={<Profile />}/>
-          
+          <Route path="/busket" element={<Busket/>}/>
 
         </Routes>
       </BrowserRouter>
