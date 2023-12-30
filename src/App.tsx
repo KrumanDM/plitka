@@ -28,7 +28,7 @@ function App() {
         <Routes>
           {/* Убираем exact */}
           <Route path="/plitka" element={<Site />} />
-          <Route path="/jackets" element={<JacketsStorage />} />
+          <Route path="/plitka/jackets" element={<JacketsStorage />} />
           <Route path="/sweaters" element={<SweatersStorage />} />
           <Route path="/hoodies" element={<HoodiesStorage />} />
 
