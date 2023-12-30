@@ -5,18 +5,18 @@ import { Hats } from "./Hats/Hats";
 import { Socks } from "./Socks/Socks";
 
 export const Accessories = () => {
-   // Создаем переменную состояния для хранения видимости блока меню
-   const [showMenu, setShowMenu] = useState(false);
+  // Создаем переменную состояния для хранения видимости блока меню
+  const [showMenu, setShowMenu] = useState(false);
 
-   // Создаем функцию для показа блока меню при наведении на ссылку
-   const showMenuHandler = () => {
-     setShowMenu(true);
-   };
- 
-   // Создаем функцию для скрытия блока меню при убирании мыши с блока
-   const hideMenuHandler = () => {
-     setShowMenu(false);
-   };
+  // Создаем функцию для показа блока меню при наведении на ссылку
+  const showMenuHandler = () => {
+    setShowMenu(true);
+  };
+
+  // Создаем функцию для скрытия блока меню при убирании мыши с блока
+  const hideMenuHandler = () => {
+    setShowMenu(false);
+  };
   return (
     <div className={s.clothingContainer}>
       <a
