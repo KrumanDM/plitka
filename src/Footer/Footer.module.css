@@ -1,10 +1,20 @@
-.footerContainer{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: normal;
-    align-items: normal;
-    align-content: normal;
-    gap: 10px;
-    padding-left: 10px;
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+  gap: 10px;
+  padding-left: 30px;
+  height: 235px;
+  
+}
+.icon {
+  width: 25px;
+
+}
+.films {
+  width: 70px;
+  
 }
