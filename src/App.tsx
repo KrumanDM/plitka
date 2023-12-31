@@ -4,7 +4,6 @@ import s from "./App.module.css";
 import { Container } from "@mui/material";
 
 import { Site } from "./Site/Site";
-import { SweatersStorage } from "./Header/Clothing/Sweaters/SweatersStorage/SweatersStorage";
 import { JacketsStorage } from "./Header/Clothing/Jackets/JacketsStorage/JacketsStorage";
 import { HoodiesStorage } from "./Header/Clothing/Hoodies/HoodiesStorage/HoodiesStorage";
 import { SocksStorage } from "./Header/Accessories/Socks/SocksStorage/SocksStorage";
@@ -16,6 +15,7 @@ import { TrucksStorage } from "./Header/Skate/Trucks/TrucksStorage/TrucksStorage
 import { Profile } from "./Header/Profile/Profile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Busket } from "./Header/Busket/Busket";
+import Sweaters from "./Header/Clothing/Sweaters/Sweaters";
 
 
 console.log("hi");
@@ -29,7 +29,7 @@ function App() {
           {/* Убираем exact */}
           <Route path="/plitka" element={<Site />} />
           <Route path="/plitka/jackets" element={<JacketsStorage />} />
-          <Route path="/sweaters" element={<SweatersStorage />} />
+          <Route path="/plitka/sweaters" element={<Sweaters />} />
           <Route path="/hoodies" element={<HoodiesStorage />} />
 
           <Route path="/bags" element={<BagsStorage />} />
