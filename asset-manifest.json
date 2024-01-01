@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/plitka/static/css/main.65b0cba2.css",
-    "main.js": "/plitka/static/js/main.410d4eaf.js",
+    "main.css": "/plitka/static/css/main.825d2f20.css",
+    "main.js": "/plitka/static/js/main.1a7d92ac.js",
     "static/js/787.d4aba7ab.chunk.js": "/plitka/static/js/787.d4aba7ab.chunk.js",
     "static/media/photo4.jpg": "/plitka/static/media/photo4.be280cd8df41a3c0b3a0.jpg",
     "static/media/photo1.jpg": "/plitka/static/media/photo1.7deb825c1b8c8e7f5e93.jpg",
@@ -11,12 +11,12 @@
     "static/media/closeOutline.svg": "/plitka/static/media/closeOutline.4cad2e969933b5ede68cd06e93fbb0a5.svg",
     "static/media/slick.woff": "/plitka/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/plitka/index.html",
-    "main.65b0cba2.css.map": "/plitka/static/css/main.65b0cba2.css.map",
-    "main.410d4eaf.js.map": "/plitka/static/js/main.410d4eaf.js.map",
+    "main.825d2f20.css.map": "/plitka/static/css/main.825d2f20.css.map",
+    "main.1a7d92ac.js.map": "/plitka/static/js/main.1a7d92ac.js.map",
     "787.d4aba7ab.chunk.js.map": "/plitka/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.65b0cba2.css",
-    "static/js/main.410d4eaf.js"
+    "static/css/main.825d2f20.css",
+    "static/js/main.1a7d92ac.js"
   ]
 }
