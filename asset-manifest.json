@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/plitka/static/css/main.0a26e551.css",
-    "main.js": "/plitka/static/js/main.56e2257c.js",
+    "main.css": "/plitka/static/css/main.f12ff40d.css",
+    "main.js": "/plitka/static/js/main.61adfca4.js",
     "static/js/787.d4aba7ab.chunk.js": "/plitka/static/js/787.d4aba7ab.chunk.js",
     "static/media/slick.svg": "/plitka/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/plitka/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -9,12 +9,12 @@
     "static/media/closeOutline.svg": "/plitka/static/media/closeOutline.6693559b51caac874348c919d4e54d0b.svg",
     "static/media/slick.woff": "/plitka/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/plitka/index.html",
-    "main.0a26e551.css.map": "/plitka/static/css/main.0a26e551.css.map",
-    "main.56e2257c.js.map": "/plitka/static/js/main.56e2257c.js.map",
+    "main.f12ff40d.css.map": "/plitka/static/css/main.f12ff40d.css.map",
+    "main.61adfca4.js.map": "/plitka/static/js/main.61adfca4.js.map",
     "787.d4aba7ab.chunk.js.map": "/plitka/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a26e551.css",
-    "static/js/main.56e2257c.js"
+    "static/css/main.f12ff40d.css",
+    "static/js/main.61adfca4.js"
   ]
 }
