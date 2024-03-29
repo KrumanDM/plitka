@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/plitka/static/css/main.d21d2bc3.css",
-    "main.js": "/plitka/static/js/main.313fdb39.js",
+    "main.css": "/plitka/static/css/main.4751d72f.css",
+    "main.js": "/plitka/static/js/main.52facfeb.js",
     "static/js/787.d4aba7ab.chunk.js": "/plitka/static/js/787.d4aba7ab.chunk.js",
     "static/media/hockey.webp": "/plitka/static/media/hockey.fa114d7bd5500fe12975.webp",
     "static/media/slick.svg": "/plitka/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -10,12 +10,12 @@
     "static/media/closeOutline.svg": "/plitka/static/media/closeOutline.6693559b51caac874348c919d4e54d0b.svg",
     "static/media/slick.woff": "/plitka/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/plitka/index.html",
-    "main.d21d2bc3.css.map": "/plitka/static/css/main.d21d2bc3.css.map",
-    "main.313fdb39.js.map": "/plitka/static/js/main.313fdb39.js.map",
+    "main.4751d72f.css.map": "/plitka/static/css/main.4751d72f.css.map",
+    "main.52facfeb.js.map": "/plitka/static/js/main.52facfeb.js.map",
     "787.d4aba7ab.chunk.js.map": "/plitka/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d21d2bc3.css",
-    "static/js/main.313fdb39.js"
+    "static/css/main.4751d72f.css",
+    "static/js/main.52facfeb.js"
   ]
 }
