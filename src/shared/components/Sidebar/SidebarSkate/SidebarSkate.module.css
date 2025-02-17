@@ -1,0 +1,61 @@
+
+.skateContainer {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sidebarItem {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.sidebarItem:focus {
+  outline: none;
+}
+.sidebarItem:hover,
+.buttonContainer:hover {
+  background-color: #e2e2e2;
+}
+
+.selected {
+  background-color: #0056b3;
+  color: white;
+}
+
+.open .slide {
+  transform: translateX(0);
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  font-size: 16px;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  
+}
+.slide a{
+  text-decoration: none;
+  color:var(--text-color)
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.slide-entering,
+.slide-entered {
+  animation: fadeIn 0.5s forwards;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  
+}

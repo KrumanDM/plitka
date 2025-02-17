@@ -1,0 +1,55 @@
+/* CardSearch.module.css */
+.card {
+  margin: 20px;
+  padding: 20px;
+  cursor: pointer;
+  max-width: 200px;
+  color:var(--text-color);
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease;
+  
+}
+.card:hover{
+  box-shadow: 0 4px 24px hsla(230, 75%, 40%, 0.4);
+}
+
+.cardImg {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Ensure the image doesn't exceed the card height */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+.cardDetails {
+  padding-top: 10px;
+}
+
+.cardTitle {
+  
+  
+}
+
+.cardPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  
+
+}
+
+.bag-icon {
+  color: #535353;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    cursor: pointer;
+    max-width: 130px;
+  }
+  .cardDetails {
+    font-size: 13.5px;
+  }
+}

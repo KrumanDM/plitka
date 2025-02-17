@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Header } from "../../../Header";
+import { Header } from "../../../../shared/components/Header/Header";
 import s from "./SocksStorage.module.css";
 
-export const SocksStorage: React.FC = () => {
+ const SocksStorage: React.FC = () => {
   return (
     <>
       <Header />
@@ -132,3 +132,4 @@ export const SocksStorage: React.FC = () => {
     </>
   );
 };
+export default SocksStorage;

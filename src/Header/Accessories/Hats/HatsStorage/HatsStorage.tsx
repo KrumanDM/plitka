@@ -1,7 +1,7 @@
 import React from "react";
-import { Header } from "../../../Header";
+import { Header } from "../../../../shared/components/Header/Header";
 
-export const HatsStorage = () => {
+ const HatsStorage = () => {
   return (
     <div>
       <Header/>
@@ -11,3 +11,4 @@ export const HatsStorage = () => {
     </div>
   );
 };
+export default HatsStorage;

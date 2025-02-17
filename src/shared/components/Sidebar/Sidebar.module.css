@@ -1,0 +1,72 @@
+.storeContainer1{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 30px;
+  margin: 20px;
+  padding-top: 70px;
+  
+}
+
+.sidebar1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Set the sidebar to full width */
+  height: 100vh; /* Set the sidebar to full height */
+  background: white;
+  z-index: 1000;
+  transform: translateX(0); /* Position the sidebar inside the viewport by default */
+  transition: transform 0.3s ease-out; 
+  
+}
+.sidebar1:focus {
+  outline: none;
+}
+.sidebar1 > .sideContent {
+  pointer-events: none;
+}
+
+.sidebar1 > .sideContent > div {
+  pointer-events: auto;
+}
+
+.sidebar1.closed {
+  transform: translateX(-100%); /* Move the sidebar outside of the viewport when it's closed */
+}
+.sidebarContent{
+  /* cursor: pointer; */
+  transform: translateX(-150%);
+  animation: ani 1s forwards;
+}
+@keyframes ani {
+  0% {transform: translateX(-150%);}
+  100% {transform: translateY(0);}
+}
+
+.closeButton {
+  /* Размер и цвет кнопки */
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  background: transparent;
+  border-color: white ;
+  
+  padding: 10px;
+  padding-left: -5px;
+  padding-right: -5px;
+  
+  
+}
+
+.borderUnderClose{
+  position: absolute;
+  top: 70px;
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid #f3f3f3;
+
+}
+.sidebar1:focus {
+  outline: none;
+}
