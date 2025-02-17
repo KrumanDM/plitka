@@ -5,9 +5,9 @@ import sizeReducer from './sizeSlice';
 import colorReducer from './colorSlice';
 import brandSlice from '../shared/components/SelectBrand/brandSlice';
 import sortReducer from '../shared/api/sortSlice';
-import authReducer from '../shared/components/Profile/authSlice';
+import authReducer from '../pages/Profile/authSlice';
 import cartReducer from './cartSlice';
-import ordersReducer from '../shared/components/Profile/UserProfile/orderSlice';
+import ordersReducer from '../pages/Profile/UserProfile/orderSlice';
 import complitesReducer from '../shared/api/complites/dataComplitesSlice'
 import trucksReducer from "../shared/api/trucks/dataTrucksSlice"
 

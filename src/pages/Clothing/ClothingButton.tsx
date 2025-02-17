@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import s from "./ClothingButton.module.css";
+import { Hoodies } from "../../Header/Clothing/Hoodies/Hoodies";
+import { Jackets } from "../../Header/Clothing/Jackets/Jackets";
+import { SweatersButton } from "../../Header/Clothing/Sweaters/SweatersButton";
 
-import s from "./AccessoriesButton.module.css";
-import { BagsButton } from "../../../Header/Accessories/Bags/BagsButton";
-import { Hats } from "../../../Header/Accessories/Hats/Hats";
-import { Socks } from "../../../Header/Accessories/Socks/Socks";
 
-export const Accessories = () => {
+
+export const Clothing = () => {
   // Создаем переменную состояния для хранения видимости блока меню
   const [showMenu, setShowMenu] = useState(false);
 
@@ -35,9 +36,8 @@ export const Accessories = () => {
         className={s.clothingContainer}
         href={"/#"}
       >
-        Аксессуары
+        Одежда
       </a>
-      
       {/* Добавляем условный рендеринг для блока меню в зависимости от состояния showMenu */}
       {showMenu && (
         <div
@@ -45,9 +45,9 @@ export const Accessories = () => {
           onMouseLeave={hideMenuHandler}
           className={s.menu}
         >
-          <BagsButton />
-          <Hats />
-          <Socks />
+          <Jackets />
+          <SweatersButton />
+          <Hoodies />
           
         </div>
       )}

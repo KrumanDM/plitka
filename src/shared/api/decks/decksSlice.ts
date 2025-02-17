@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import Decks from '../../components/Decks/Decks';
+import Decks from '../../../pages/Skate/Decks/Decks';
 
 export type ProductType = {
   img: string;

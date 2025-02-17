@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ComplitesButton } from "../../Complites/ComplitesButton";
-import { DecksButton } from "../../Decks/DecksButton";
-import { TrucksButton } from "../../Trucks/TrucksButton";
+import { ComplitesButton } from "../../../../pages/Skate/Complites/ComplitesButton";
+import { DecksButton } from "../../../../pages/Skate/Decks/DecksButton";
+import { TrucksButton } from "../../../../pages/Skate/Trucks/TrucksButton";
 import s from "./SidebarSkate.module.css";
 
 type SidebarProps = {

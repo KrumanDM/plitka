@@ -10,20 +10,20 @@ import { CircularProgress } from "@mui/material";
 
 
 // Lazy load components
-const Site = lazy(() => import("../shared/components/Site/Site"));
+const Site = lazy(() => import("../pages/Site/Site"));
 const JacketsStorage = lazy(() => import("../Header/Clothing/Jackets/JacketsStorage/JacketsStorage"));
 const HoodiesStorage = lazy(() => import("../Header/Clothing/Hoodies/HoodiesStorage/HoodiesStorage"));
 const SocksStorage = lazy(() => import("../Header/Accessories/Socks/SocksStorage/SocksStorage"));
 const HatsStorage = lazy(() => import("../Header/Accessories/Hats/HatsStorage/HatsStorage"));
-const Bags = lazy(() => import("../Header/Accessories/Bags/Bags"));
-const Trucks = lazy(() => import("../shared/components/Trucks/Trucks"));
-const Profile = lazy(() => import("../shared/components/Profile/Profile"));
-const Busket = lazy(() => import("../shared/components/Busket/Busket"));
+const Bags = lazy(() => import("../pages/Accessories/Bags/Bags"));
+const Trucks = lazy(() => import("../pages/Skate/Trucks/Trucks"));
+const Profile = lazy(() => import("../pages/Profile/Profile"));
+const Busket = lazy(() => import("../pages/Busket/Busket"));
 const Sweaters = lazy(() => import("../Header/Clothing/Sweaters/Sweaters"));
-const Decks = lazy(() => import("../shared/components/Decks/Decks"));
+const Decks = lazy(() => import("../pages/Skate/Decks/Decks"));
 const CardPage = lazy(() => import("../shared/components/ProductsComponents/CardPage"));
-const Complites = lazy(() => import("../shared/components/Complites/Complites"));
-const UserProfile = lazy(() => import("../shared/components/Profile/UserProfile/UserProfile"));
+const Complites = lazy(() => import("../pages/Skate/Complites/Complites"));
+const UserProfile = lazy(() => import("../pages/Profile/UserProfile/UserProfile"));
 
 const App: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);

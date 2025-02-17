@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BagsButton } from "../../../../Header/Accessories/Bags/BagsButton";
+import { BagsButton } from "../../../../pages/Accessories/Bags/BagsButton";
 import { Hats } from "../../../../Header/Accessories/Hats/Hats";
 import { Socks } from "../../../../Header/Accessories/Socks/Socks";
 import s from "./SidebarAccessories.module.css"

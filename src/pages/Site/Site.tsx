@@ -1,7 +1,7 @@
 import react from "react";
-import { Footer } from "../../../pages/Footer/Footer";
-import { Header } from "../Header/Header";
-import { Main } from "../../../pages/Main/Main";
+import { Footer } from "../Footer/Footer";
+import { Header } from "../../shared/components/Header/Header";
+import { Main } from "../Main/Main";
 
 
 const Site = () => {

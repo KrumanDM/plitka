@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Header } from "../Header/Header";
+import { Header } from "../../shared/components/Header/Header";
 import s from "./Busket.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store/store";
+import { AppDispatch, RootState } from "../../store/store";
 import {
   clearCart,
   incrementItem,
@@ -12,8 +12,8 @@ import {
   placeOrder,
   OrderData,
   setCart,
-} from "../../../store/cartSlice";
-import { Item } from "../../config/types";
+} from "../../store/cartSlice";
+import { Item } from "../../shared/config/types";
 import OrderSuccessModal from "./OrderSuccessModal/OrderSuccessModal";
 
 type BusketPropsType = {

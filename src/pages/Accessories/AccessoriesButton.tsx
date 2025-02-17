@@ -1,17 +1,14 @@
-import React, { MouseEventHandler, useState } from "react";
-import { ComplitesButton } from "../Complites/ComplitesButton";
+import React, { useState } from "react";
 
-import { DecksButton } from "../Decks/DecksButton";
+import s from "./AccessoriesButton.module.css";
+import { BagsButton } from "./Bags/BagsButton";
+import { Hats } from "../../Header/Accessories/Hats/Hats";
+import { Socks } from "../../Header/Accessories/Socks/Socks";
 
-import s from "./SkateButton.module.css";
-import { TrucksButton } from "../Trucks/TrucksButton";
-;
-
-export const Skate = () => {
+export const Accessories = () => {
   // Создаем переменную состояния для хранения видимости блока меню
   const [showMenu, setShowMenu] = useState(false);
 
-  
   // Создаем функцию для показа блока меню при наведении на ссылку
   const showMenuHandler = () => {
     setShowMenu(true);
@@ -22,24 +19,25 @@ export const Skate = () => {
     setShowMenu(false);
   };
 
-  const linkClickHandler = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+   // Предотвращаем переход по ссылке href={'#'}
+   const linkClickHandler = (event:React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
     showMenuHandler();
   };
-  
 
   return (
     <>
-    <button className={s.skateContainer}>
+    <button className={s.clothingContainer}>
       <a
         // Добавляем обработчик события onMouseOver для показа блока меню
         onMouseOver={showMenuHandler}
         onClick={linkClickHandler}
-        className={s.skateContainer}
+        className={s.clothingContainer}
         href={"/#"}
       >
-        Скейт
+        Аксессуары
       </a>
+      
       {/* Добавляем условный рендеринг для блока меню в зависимости от состояния showMenu */}
       {showMenu && (
         <div
@@ -47,10 +45,10 @@ export const Skate = () => {
           onMouseLeave={hideMenuHandler}
           className={s.menu}
         >
+          <BagsButton />
+          <Hats />
+          <Socks />
           
-          <DecksButton />
-          <ComplitesButton />
-          <TrucksButton />
         </div>
       )}
     </button>

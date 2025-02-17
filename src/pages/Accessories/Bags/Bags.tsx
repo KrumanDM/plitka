@@ -1,9 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import s from "./Decks.module.css";
-import Navigation from "../ProductsComponents/Nav";
-import Products from "../ProductsComponents/Products/Products";
-import Card from "../ProductsComponents/Card";
-import { Header } from "../Header/Header";
+import s from "./Bags.module.css";
+import Navigation from "../../../shared/components/ProductsComponents/Nav";
 import { useMediaQuery } from "react-responsive";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -13,7 +10,6 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
-import { useAppDispatch } from "../../config/hooks";
 import {
   setSortLabel,
   sortByNewest,
@@ -21,16 +17,20 @@ import {
   sortByPriceLowToHigh,
   sortByTitleAZ,
   sortByTitleZA,
-} from "../../api/sortSlice";
+} from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../../../pages/Footer/Footer";
-import { Product } from "../../config/types";
-import SelectColors from "../SelectColors/SelectColors";
-import SelectSizes from "../SelectSize/SelectSizes";
-import SelectBrand from "../SelectBrand/SelectBrand";
-import { fetchDataDecks } from "../../api/decks/decksSlice";
+import { Footer } from "../../Footer/Footer";
+import { Product } from "../../../shared/config/types";
+import SelectColors from "../../../shared/components/SelectColors/SelectColors";
+import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
+import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
+import { fetchDataDecks } from "../../../shared/api/decks/decksSlice";
+import Card from "../../../shared/components/ProductsComponents/Card";
+import { Header } from "../../../shared/components/Header/Header";
+import { useAppDispatch } from "../../../shared/config/hooks";
+import Products from "../../../shared/components/ProductsComponents/Products/Products";
 
-type DecksType = {
+type BagsType = {
   category: string;
   color: string;
   company: string;
@@ -42,7 +42,7 @@ type DecksType = {
   year: string;
 };
 
-function Decks() {
+function Bags() {
   const dispatch = useAppDispatch();
   const data = useSelector((state: RootState) => state.decks.data);
   const status = useSelector((state: RootState) => state.decks.status);
@@ -120,13 +120,13 @@ function Decks() {
   };
   // Создаются уникальные неповторяющиеся цвета с помощью new Set
   const uniqueColors = Array.from(
-    new Set(data.map((product: DecksType) => product.color))
+    new Set(data.map((product: BagsType) => product.color))
   ).sort();
   const uniqueSizes = Array.from(
-    new Set(data.map((product: DecksType) => product.size))
+    new Set(data.map((product: BagsType) => product.size))
   ).sort();
   const uniqueBrands = Array.from(
-    new Set(data.map((product: DecksType) => product.company))
+    new Set(data.map((product: BagsType) => product.company))
   ).sort();
 
   const handleSearch = (query: string) => {
@@ -335,4 +335,4 @@ function Decks() {
   );
 }
 
-export default Decks;
+export default Bags;

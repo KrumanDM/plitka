@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Footer } from "../../../../pages/Footer/Footer";
-import { AppDispatch, RootState } from "../../../../store/store";
-import { Header } from "../../Header/Header";
+import { Footer } from "../../Footer/Footer";
+import { AppDispatch, RootState } from "../../../store/store";
+import { Header } from "../../../shared/components/Header/Header";
 import { deleteOrder, getOrders } from "./orderSlice";
 import s from "./UserProfile.module.css";
 

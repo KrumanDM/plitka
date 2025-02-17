@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import s from "./Complites.module.css";
-import Navigation from "../ProductsComponents/Nav"
-import { Header } from "../Header/Header";
+import Navigation from "../../../shared/components/ProductsComponents/Nav"
+import { Header } from "../../../shared/components/Header/Header";
 import { useMediaQuery } from "react-responsive";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -11,7 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
-import { useAppDispatch } from "../../config/hooks";
+import { useAppDispatch } from "../../../shared/config/hooks";
 import {
   setSortLabel,
   sortByNewest,
@@ -19,15 +19,15 @@ import {
   sortByPriceLowToHigh,
   sortByTitleAZ,
   sortByTitleZA,
-} from "../../api/sortSlice";
+} from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../../../pages/Footer/Footer";
-import { fetchComplitesData } from "../../api/complites/dataComplitesSlice";
-import SelectColors from "../SelectColors/SelectColors";
-import SelectSizes from "../SelectSize/SelectSizes";
-import SelectBrand from "../SelectBrand/SelectBrand";
-import Card from "../ProductsComponents/Card";
-import Products from "../ProductsComponents/Products/Products";
+import { Footer } from "../../Footer/Footer";
+import { fetchComplitesData } from "../../../shared/api/complites/dataComplitesSlice";
+import SelectColors from "../../../shared/components/SelectColors/SelectColors";
+import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
+import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
+import Card from "../../../shared/components/ProductsComponents/Card";
+import Products from "../../../shared/components/ProductsComponents/Products/Products";
 
 type ComplitesType = {
     category: string;
