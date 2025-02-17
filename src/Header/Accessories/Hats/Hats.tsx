@@ -4,10 +4,9 @@ import s from "./Hats.module.css";
 import { Link } from "react-router-dom";
 
 export const Hats = () => {
-  return (
-    <div className={s.hatsContainer}>
-      {/* Оборачиваем текст в компонент Link и указываем путь /skateboard */}
-      <Link to="/hats">Hats</Link>
-    </div>
-  );
-};
+  return <div className={s.hatsButtonContainer}>
+  <button className={s.hatsButton}>
+      <Link to="/hats" className={s.hatsLink}>Hats</Link>
+  </button> 
+</div>
+} 

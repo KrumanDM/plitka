@@ -1,0 +1,28 @@
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: normal;
+  align-content: normal;
+  gap: 10px;
+  padding-top: 70px;
+  padding-left: 30px;
+  color: black;
+  
+}
+.infoText {
+  font-size: 15px;
+}
+
+.icon {
+  width: 25px;
+  
+}
+.films {
+  width: 70px;
+  color: black;
+}
+.copyright{
+  padding-top: 10px;
+}

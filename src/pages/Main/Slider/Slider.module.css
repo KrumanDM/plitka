@@ -1,0 +1,22 @@
+.sliderContainer {
+    background-color: var(--body-color);
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Определяем анимацию */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Применяем анимацию к элементу */
+  .element {
+    animation: fadeIn 1s ease-out;
+  }
+  

@@ -34,6 +34,9 @@
   width: 100%;
   max-height: 320px;
 }
+.item1:hover {
+  box-shadow: 0 4px 24px hsla(230, 75%, 40%, 0.4);
+}
 
 @media (max-width: 960px) {
   .item1 {

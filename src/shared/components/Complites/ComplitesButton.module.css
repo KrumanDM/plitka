@@ -1,0 +1,22 @@
+.complitesButtonContainer:hover{
+    /* Добавляем нижнюю границу для ссылки */
+    
+}
+.complitesButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+.complitesLink {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    padding-right: 197px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

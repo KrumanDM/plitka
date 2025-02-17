@@ -1,0 +1,92 @@
+.clothingContainer{
+  position: relative;
+  padding-bottom: 27px;
+  padding-top: 27px;
+  background-color: transparent;
+}
+.clothingContainer::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: black;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  right: 50%;
+  top: 69.5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.clothingContainer:hover::after {
+  left: 0;
+  right: 0;
+  top: 69.5px;
+}
+
+/* Стили для тега <a> */
+.clothingContainer a {
+    
+    
+    /* Убираем подчеркивание ссылки */
+    text-decoration: none;
+    /* Задаем цвет ссылки */
+    color: black;
+  }
+  
+  /* Стили для блока с меню */
+  .menu {
+    /* Скрываем блок по умолчанию */
+    display: none;
+    /* Задаем фоновый цвет для блока */
+    background-color: white;
+    /* Задаем отступы для блока */
+    padding: 10px;
+    /* Задаем границу для блока */
+    border: 1px solid  #f3f3f3;
+    /* Задаем позицию для блока */
+    position: absolute;
+    /* Смещаем блок вниз относительно ссылки */
+    top: 72.5px;
+    width: 150px;
+    margin-left: -30px;
+    z-index: 60;
+    text-decoration: none;
+    /* Добавляем свойство pointer-events */
+    pointer-events: none;
+  }
+  
+  /* Стили для компонентов внутри блока */
+  .menu > * {
+    /* Задаем отступы для компонентов */
+    margin: 10px;
+  }
+  
+  .menu a {
+    display: flex;
+    text-decoration: none;
+    color: #6d7175;
+  }
+  
+  .menu a:hover {
+    text-decoration: none;
+    color: black;
+  }
+  
+  /* Стиль для отображения блока при наведении на ссылку или на блок */
+  .clothingContainer a:hover + .menu, .menu:hover {
+    /* Изменяем свойство display на block */
+    display: block;
+    /* Включаем pointer-events для блока */
+    pointer-events: auto;
+    animation: ani 0.5s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes ani {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
