@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Hoodies } from "../../../../Header/Clothing/Hoodies/Hoodies";
-import { Jackets } from "../../../../Header/Clothing/Jackets/Jackets";
-import { SweatersButton } from "../../../../Header/Clothing/Sweaters/SweatersButton";
+import { HoodiesButton } from "../../../../pages/Clothing/Hoodies/HoodiesButton";
+import { JacketsButton } from "../../../../pages/Clothing/Jackets/JacketsButton";
+import { SweatersButton } from "../../../../pages/Clothing/Sweaters/SweatersButton";
 import s from "./SidebarClothing.module.css";
 
 type SidebarProps = {
@@ -44,13 +44,13 @@ export const SidebarClothing = ({ onClickOutside }:SidebarProps) => {
       {isOpen1 && (
         <div onClick={closeIfSiteHere} className={s.slide}>
           <div className={s.buttonContainer}>
-          <Jackets />
+          <JacketsButton />
           </div>
           <div onClick={closeIfSiteHere} className={s.buttonContainer}>
           <SweatersButton />
           </div>
           <div onClick={closeIfSiteHere} className={s.buttonContainer}>
-          <Hoodies />
+          <HoodiesButton />
           </div>
         </div>
       )}
