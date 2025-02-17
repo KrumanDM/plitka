@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import s from "./ClothingButton.module.css";
-import { Hoodies } from "../../Header/Clothing/Hoodies/Hoodies";
-import { Jackets } from "../../Header/Clothing/Jackets/Jackets";
-import { SweatersButton } from "../../Header/Clothing/Sweaters/SweatersButton";
+import { HoodiesButton } from "./Hoodies/HoodiesButton";
+import { JacketsButton } from "./Jackets/JacketsButton";
+import { SweatersButton } from "./Sweaters/SweatersButton";
 
 
 
@@ -45,9 +45,9 @@ export const Clothing = () => {
           onMouseLeave={hideMenuHandler}
           className={s.menu}
         >
-          <Jackets />
+          <JacketsButton />
           <SweatersButton />
-          <Hoodies />
+          <HoodiesButton />
           
         </div>
       )}

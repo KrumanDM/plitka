@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BagsButton } from "../../../../pages/Accessories/Bags/BagsButton";
-import { Hats } from "../../../../Header/Accessories/Hats/Hats";
-import { Socks } from "../../../../Header/Accessories/Socks/Socks";
+import { HatsButton } from "../../../../pages/Accessories/Hats/HatsButton";
+import { SocksButton } from "../../../../pages/Accessories/Socks/SocksButton";
 import s from "./SidebarAccessories.module.css"
 
 type SidebarProps = {
@@ -49,10 +49,10 @@ className={`${s.sidebarItem} ${isOpen1 && isSelected ? s.selected : ""}`}
           <BagsButton/>
           </div>
           <div onClick={closeIfSiteHere} className={s.buttonContainer}>
-          <Hats/>
+          <HatsButton/>
           </div>
           <div onClick={closeIfSiteHere} className={s.buttonContainer}>
-          <Socks/>
+          <SocksButton/>
           </div>
         </div>
         

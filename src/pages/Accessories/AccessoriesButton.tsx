@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import s from "./AccessoriesButton.module.css";
 import { BagsButton } from "./Bags/BagsButton";
-import { Hats } from "../../Header/Accessories/Hats/Hats";
-import { Socks } from "../../Header/Accessories/Socks/Socks";
+import { HatsButton } from "./Hats/HatsButton";
+import { SocksButton } from "./Socks/SocksButton";
 
 export const Accessories = () => {
   // Создаем переменную состояния для хранения видимости блока меню
@@ -46,8 +46,8 @@ export const Accessories = () => {
           className={s.menu}
         >
           <BagsButton />
-          <Hats />
-          <Socks />
+          <HatsButton />
+          <SocksButton />
           
         </div>
       )}
