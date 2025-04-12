@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/plitka/static/css/main.a63aa628.css",
+    "main.css": "/plitka/static/css/main.cd0b67bf.css",
     "main.js": "/plitka/static/js/main.3477fcfd.js",
     "static/js/988.f592f33e.chunk.js": "/plitka/static/js/988.f592f33e.chunk.js",
     "static/media/Jante_633.png": "/plitka/static/media/Jante_633.f8b786350bd2b91441a9.png",
@@ -12,12 +12,12 @@
     "static/media/closeOutline.svg": "/plitka/static/media/closeOutline.de8bb289570307e4f9796fdaa5b78502.svg",
     "static/media/slick.woff": "/plitka/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/plitka/index.html",
-    "main.a63aa628.css.map": "/plitka/static/css/main.a63aa628.css.map",
+    "main.cd0b67bf.css.map": "/plitka/static/css/main.cd0b67bf.css.map",
     "main.3477fcfd.js.map": "/plitka/static/js/main.3477fcfd.js.map",
     "988.f592f33e.chunk.js.map": "/plitka/static/js/988.f592f33e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a63aa628.css",
+    "static/css/main.cd0b67bf.css",
     "static/js/main.3477fcfd.js"
   ]
 }
