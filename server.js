@@ -9,10 +9,15 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
+
+
 // Подключение к MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/ProductsBox?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.4', {})
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
+
+// Проверка статуса подключения
+console.log(mongoose.connection.readyState)
 
 // Определение схемы и модели
 const decksSchema = new mongoose.Schema({
@@ -74,7 +79,8 @@ app.get('/api/decks', async (req, res) => {
     const decks = await Decks.find();
     res.status(200).send(decks);
   } catch (error) {
-    res.status(500).send(error);
+    console.error(error);
+    res.status(500).send({ message: 'Ошибка при получении данных', error: error.message });
   }
 });
 
@@ -211,3 +217,4 @@ app.delete('/api/orders/:orderId', async (req, res) => {
     res.status(500).send({ message: 'Ошибка при удалении заказа' });
   }
 });
+

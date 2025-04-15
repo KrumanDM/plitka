@@ -1,19 +1,20 @@
-import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Sidebar } from '../Sidebar/Sidebar'; // Импортируйте Sidebar
-import { Clothing } from '../../../pages/Clothing/ClothingButton';
-import { Accessories } from '../../../pages/Accessories/AccessoriesButton';
-import { Skate } from '../../../pages/Skate/SkateButton';
-import s from './Header.module.css';
-import SearchForm from '../Search/SearchForm';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
-import { useMediaQuery } from 'react-responsive';
-import MenuIcon from '@mui/icons-material/Menu';
-import useProducts from './useProducts';
-import Products from '../ProductsComponents/Products/Products';
-import CardSearch from '../Search/CardSearch';
+import React, { useState, useEffect, useRef, ChangeEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Sidebar } from "../Sidebar/Sidebar"; // Импортируйте Sidebar
+import { Clothing } from "../../../pages/Clothing/ClothingButton";
+import { Accessories } from "../../../pages/Accessories/AccessoriesButton";
+import { Skate } from "../../../pages/Skate/SkateButton";
+import s from "./Header.module.css";
+import SearchForm from "../Search/SearchForm";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
+import { useMediaQuery } from "react-responsive";
+import MenuIcon from "@mui/icons-material/Menu";
+import useProducts from "./useProducts";
+import Products from "../ProductsComponents/Products/Products";
+import CardSearch from "../Search/CardSearch";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 
 interface Product {
   img: string;
@@ -32,30 +33,30 @@ interface Product {
 export const Header = () => {
   const navigate = useNavigate();
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const { data, error, isLoading } = useProducts(query);
 
   const [openSidebar, setOpenSidebar] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [showResults, setShowResults] = useState(false);
 
   const searchFormRef = useRef<HTMLDivElement>(null);
   const productsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isSearchOpen, showResults]);
 
   useEffect(() => {
     if (openSidebar) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [openSidebar]);
 
@@ -90,9 +91,9 @@ export const Header = () => {
   };
 
   const handleProfileClick = (event: React.MouseEvent) => {
-    const userEmail = localStorage.getItem('userEmail');
+    const userEmail = localStorage.getItem("userEmail");
     if (userEmail) {
-      navigate('/user-profile');
+      navigate("/user-profile");
       event.preventDefault();
     }
   };
@@ -102,7 +103,7 @@ export const Header = () => {
     setQuery(query);
   };
 
-  let prevQuery = '';
+  let prevQuery = "";
   let result: JSX.Element[] = [];
 
   const filteredData = (products: Product[], query: string) => {
@@ -116,7 +117,7 @@ export const Header = () => {
 
     const filteredProducts = products.filter((product) => {
       const title = product.title.toLowerCase();
-      const queryWords = lowercasedQuery.split(' ');
+      const queryWords = lowercasedQuery.split(" ");
       return queryWords.every((word) => title.includes(word));
     });
 
@@ -177,6 +178,9 @@ export const Header = () => {
           <div onClick={handleOpenSearch} className={s.searchContainer}>
             <SearchIcon />
           </div>
+          <Link to="/news" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <ArticleOutlinedIcon />
+          </Link>
           <div className={s.profile}>
             <Link to="/profile" onClick={handleProfileClick}>
               <AccountCircleIcon />

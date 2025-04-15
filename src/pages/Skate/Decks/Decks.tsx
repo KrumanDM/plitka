@@ -30,6 +30,7 @@ import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
 import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
 import { fetchDataDecks } from "../../../shared/api/decks/decksSlice";
 
+
 type DecksType = {
   category: string;
   color: string;
