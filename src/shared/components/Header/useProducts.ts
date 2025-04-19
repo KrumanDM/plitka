@@ -18,9 +18,9 @@ interface Product {
 
 const fetchProducts = async (query: string): Promise<Product[]> => {
     const results = await Promise.allSettled([
-        fetch('http://localhost:5001/api/decks'),
-        fetch('http://localhost:5001/api/trucks'),
-        fetch('http://localhost:5001/api/complites'),
+        fetch('http://localhost:5001/api/products/decks'),
+        fetch('http://localhost:5001/api/products/trucks'),
+        fetch('http://localhost:5001/api/products/complites'),
       ]);
       const data = await Promise.all(results.map((result) => {
         if (result.status === 'fulfilled') {

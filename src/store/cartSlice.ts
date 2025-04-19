@@ -44,13 +44,14 @@ export const placeOrder = createAsyncThunk(
   'cart/placeOrder',
   async (orderData: OrderData, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:5001/api/order', {
+      const response = await fetch('http://localhost:5001/api/orders/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         },
         body: JSON.stringify(orderData),
-      });
+        });
+
 
       if (!response.ok) {
         throw new Error('Failed to place order');
