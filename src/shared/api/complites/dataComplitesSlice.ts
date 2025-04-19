@@ -27,7 +27,7 @@ const initialState: DataState = {
 };
 
 export const fetchComplitesData = createAsyncThunk('/api/complites', async () => {
-  const response = await fetch('http://localhost:5001/api/complites');
+  const response = await fetch('http://localhost:5001/api/products/complites');
   const data = await response.json();
   return data;
 });

@@ -28,7 +28,7 @@ const initialState: DataState = {
 };
 
 export const fetchDataDecks = createAsyncThunk('data/fetchDataDecks', async () => {
-  const response = await fetch('http://localhost:5001/api/decks');
+  const response = await fetch('http://localhost:5001/api/products/decks');
   const data = await response.json();
   return data;
 });

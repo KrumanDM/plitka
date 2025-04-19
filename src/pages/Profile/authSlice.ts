@@ -23,7 +23,7 @@ const initialState: AuthState = {
 export const registerUser  = createAsyncThunk(
   'auth/registerUser ',
   async (values: { email: string; password: string }, { rejectWithValue }) => {
-    const response = await fetch('http://localhost:5001/api/register', {
+    const response = await fetch('http://localhost:5001/api/users/register', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {
@@ -46,7 +46,7 @@ export const registerUser  = createAsyncThunk(
 export const loginUser  = createAsyncThunk(
   'auth/loginUser ',
   async (values: { email: string; password: string }, { rejectWithValue }) => {
-    const response = await fetch('http://localhost:5001/api/login', {
+    const response = await fetch('http://localhost:5001/api/users/login', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {
