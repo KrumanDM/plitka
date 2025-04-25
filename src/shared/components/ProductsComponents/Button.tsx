@@ -11,9 +11,9 @@
  const Button:  FC<ButtonPropsType> = ({ onClickHandler, value, title }) => {
   return (
     <button onClick={onClickHandler} value={value} className={s.button}>
-      {title}
+      qwe
     </button>
   );
 };
 
-export default Button;
+

@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import s from "../App.module.css";
@@ -23,6 +23,7 @@ import Complites from "../pages/Skate/Complites/Complites";
 import UserProfile from "../pages/Profile/UserProfile/UserProfile";
 import News from "../pages/News/News";
 import NewsPage1 from "../pages/News/NewsPages/NewsPage1";
+
 
 const App: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);

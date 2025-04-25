@@ -5,6 +5,7 @@ import { Header } from "../Header/Header";
 import s from "./CardPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../store/cartSlice";
+import Button from "../Button/Button";
 
 // Define the Item type
 export interface Item {
@@ -93,12 +94,7 @@ const CardPage: React.FC<CardPageProps> = ({ cartItems }) => {
             <p>Цвет: {color}</p>
             <p>Размер: {size}</p>
           </div>
-          <button
-            className={s.button}
-            onClick={handleAddToCart}
-          >
-            Добавить в корзину
-          </button>
+          <Button onClick={handleAddToCart}>Добавить в корзину</Button>
         </div>
       </div>
       {openedImg && (
@@ -111,7 +107,8 @@ const CardPage: React.FC<CardPageProps> = ({ cartItems }) => {
           <div className={s.modalContent}>
             <h2>Товар добавлен в корзину!</h2>
       
-              <button className={s.closeButton} onClick={() => setIsModalOpen(false)}>Закрыть</button>
+              <Button
+               onClick={() => setIsModalOpen(false)}>Закрыть</Button>
             
           </div>
         </div>

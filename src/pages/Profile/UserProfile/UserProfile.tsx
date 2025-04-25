@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from "../../../store/store";
 import { Header } from "../../../shared/components/Header/Header";
 import { deleteOrder, getOrders } from "./orderSlice";
 import s from "./UserProfile.module.css";
+import Button from "../../../shared/components/Button/Button";
 
 type OrderItem = {
   title: string;
@@ -83,9 +84,9 @@ const UserProfile = () => {
               <b className={s.totalPrice}>
                 Итоговая цена: {order.totalPrice}byn
               </b>
-              <button className={s.button} onClick={() => updateIsModalOpenForOrder(order._id, true)}>
+              <Button onClick={() => updateIsModalOpenForOrder(order._id, true)} style={{width: '30%',padding:'8px'}}>
                 Отменить заказ
-              </button>
+              </Button>
             </div>
             {isModalOpenForOrderId(order._id) && (
               <div className={s.modal}>
@@ -93,17 +94,18 @@ const UserProfile = () => {
                   <h2>Вы дейсивительно хотите отменить заказ?</h2>
 
                   <div className={s.modalButtons}>
-                    <button
+                    <Button
                       onClick={() => {
                         handleDeleteOrder(order._id);
                         updateIsModalOpenForOrder(order._id, false);
                       }}
+                      style={{width: '45%', padding: '0px', }}
                     >
                       Отменить заказ
-                    </button>
-                    <button type="button" onClick={() => updateIsModalOpenForOrder(order._id, false)}>
+                    </Button>
+                    <Button type="button" onClick={() => updateIsModalOpenForOrder(order._id, false)}style={{width: '45%', padding: '0px',}}>
                       Закрыть
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

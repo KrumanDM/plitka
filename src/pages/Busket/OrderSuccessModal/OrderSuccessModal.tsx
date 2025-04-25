@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../../shared/components/Button/Button';
 import s from './OrderSuccessModal.module.css';
 
 interface OrderSuccessModalProps {
@@ -14,7 +15,7 @@ const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ isOpen, onClose }
       <div className={s.modalContent}>
         <h2>Заказ оформлен!</h2>
         <p>Вам перезвонит наш менеджер в течение 5 минут.</p>
-        <button type="button" className={s.button} onClick={onClose}>Закрыть</button>
+        <Button type="button"  onClick={onClose}>Закрыть</Button>
       </div>
     </div>
   );

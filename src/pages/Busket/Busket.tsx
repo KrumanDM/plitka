@@ -15,6 +15,7 @@ import {
 } from "../../store/cartSlice";
 import { Item } from "../../shared/config/types";
 import OrderSuccessModal from "./OrderSuccessModal/OrderSuccessModal";
+import Button from "../../shared/components/Button/Button";
 
 type BusketPropsType = {
   cartItems: Item[];
@@ -109,9 +110,11 @@ const Busket: FC<BusketPropsType> = () => {
   return (
     <>
       <Header />
+      <h1 className={s.busketMainTitle}>Корзина</h1>
       {isMobile ? (
+        
         <div className={s.busketContainer}>
-          <h1>Корзина</h1>
+          
           <div>
             
             {cartItems.map((item: ItemPropsType, index: number) => (
@@ -122,21 +125,23 @@ const Busket: FC<BusketPropsType> = () => {
                 <div className={s.titleAndCountMobile}>
                   <div className={s.titleDeck}>{item.title}</div>
                   <div className={s.countButtonsMobile}>
-                    <button
+                    <Button
                       type="button"
                       className={s.buttonPlusMinus}
                       onClick={() => handleMinusOne(item)}
+                      style={{paddingRight: '20px',paddingLeft: '12px', paddingTop:'2px', width: '20px', height: '0px'}}
                     >
                       -
-                    </button>
+                    </Button>
                     <h2 className={s.quantity}>{item.quantity}</h2>
-                    <button
+                    <Button
                       type="button"
                       className={s.buttonPlusMinus}
                       onClick={() => handlePlusOne(item)}
+                      style={{paddingRight: '20px',paddingLeft: '12px', paddingTop:'2px', width: '20px', height: '0px'}}
                     >
                       +
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className={s.itogo}>{item.totalPrice}byn</div>
@@ -148,10 +153,10 @@ const Busket: FC<BusketPropsType> = () => {
               Cумма товаров: <b>{generalPrice}byn</b>
             </div>
             <div className={s.buttonsContainerMobile}>
-              <button type="button" className={s.button} onClick={handleClearCart}>
+              <Button type="button" className={s.button} onClick={handleClearCart}>
                 Очистить корзину
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 className={
                   cartItems.length > 0
@@ -160,15 +165,16 @@ const Busket: FC<BusketPropsType> = () => {
                 }
                 onClick={() => setIsModalOpen(true)}
                 disabled={cartItems.length === 0}
+                
               >
                 Оформить заказ
-              </button>
+              </Button>
             </div>
           </div>
         </div>
       ) : (
         <div className={s.busketContainer}>
-          <h1>Корзина</h1>
+          
           <div className={s.busketDescription}>
             <div className={s.tovar}>Товар</div>
             <div className={s.threeDescription}>
@@ -187,21 +193,24 @@ const Busket: FC<BusketPropsType> = () => {
                 <div className={s.threeDescription}>
                   <div className={s.cena}>{item.newPrice}byn</div>
                   <div className={s.colvo}>
-                    <button
+                    <Button
                       type="button"
-                      className={s.buttonPlusMinus}
+                      
                       onClick={() => handleMinusOne(item)}
+                      style={{paddingRight: '20px',paddingLeft: '12px', paddingTop:'2px', width: '20px', height: '0px'}}
                     >
                       -
-                    </button>
+                    </Button>
                     <h2 className={s.quantity}>{item.quantity}</h2>
-                    <button
+                    <Button
                       type="button"
-                      className={s.buttonPlusMinus}
+                      
                       onClick={() => handlePlusOne(item)}
+                      style={{paddingRight: '20px',paddingLeft: '12px', paddingTop:'2px', width: '20px', height: '0px'}}
+                    
                     >
                       +
-                    </button>
+                    </Button>
                   </div>
                   <div className={s.itogo}>{item.totalPrice}byn</div>
                 </div>
@@ -213,21 +222,20 @@ const Busket: FC<BusketPropsType> = () => {
               Cумма товаров: <b>{generalPrice}byn</b>
             </div>
             <div className={s.buttonsContainer}>
-              <button type="button" className={s.button} onClick={handleClearCart}>
+              <Button type="button"  onClick={handleClearCart} style={{ width: "20%" }}>
                 Очистить корзину
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 className={
-                  cartItems.length > 0
-                    ? s.button
-                    : `${s.button} ${s.disabledButton}`
+                  cartItems.length > 0 ? '' : s.disabledButton
                 }
                 onClick={() => setIsModalOpen(true)}
                 disabled={cartItems.length === 0}
+                style={{ width: "20%" }}
               >
                 Оформить заказ
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -274,19 +282,19 @@ const Busket: FC<BusketPropsType> = () => {
               )}
             </label>
             <div className={s.modalButtons}>
-              <button
+              <Button
                 type="button"
                 onClick={handleOrder}
                 disabled={nameError || phoneError}
                 className={
                   nameError || phoneError
-                    ? `${s.button} ${s.disabledButton}`
-                    : s.button
+                    ? s.disabledButton : ''
                 }
+                style={{ width: "40%" }}
               >
                 Отправить
-              </button>
-              <button type="button" onClick={() => setIsModalOpen(false)}>Закрыть</button>
+              </Button>
+              <Button type="button" onClick={() => setIsModalOpen(false)} style={{ width: "40%" }}>Закрыть</Button>
             </div>
           </div>
         </div>
