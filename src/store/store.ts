@@ -8,8 +8,11 @@ import sortReducer from '../shared/api/sortSlice';
 import authReducer from '../pages/Profile/authSlice';
 import cartReducer from './cartSlice';
 import ordersReducer from '../pages/Profile/UserProfile/orderSlice';
-import complitesReducer from '../shared/api/complites/dataComplitesSlice'
-import trucksReducer from "../shared/api/trucks/dataTrucksSlice"
+import complitesReducer from '../shared/api/complites/dataComplitesSlice';
+import trucksReducer from "../shared/api/trucks/dataTrucksSlice";
+import logger from "redux-logger";
+import authMiddleware from 'pages/Profile/authMiddleware';
+
 
 const store = configureStore({
   reducer: {
@@ -25,6 +28,7 @@ const store = configureStore({
     complites: complitesReducer,
     trucks: trucksReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, authMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
