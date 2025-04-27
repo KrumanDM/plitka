@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from '../shared/api/dataSlice';
-import decksReducer from '../shared/api/decks/decksSlice'
 import sizeReducer from './sizeSlice';
 import colorReducer from './colorSlice';
 import brandSlice from '../shared/components/SelectBrand/brandSlice';
@@ -16,21 +15,20 @@ import authMiddleware from 'pages/Profile/authMiddleware';
 
 const store = configureStore({
   reducer: {
-    size: sizeReducer,
     data: dataReducer,
+    auth: authReducer,
+    orders: ordersReducer,
+    cart: cartReducer,
+    complites: complitesReducer,
+    trucks: trucksReducer,
+    size: sizeReducer,
     color: colorReducer,
     brand: brandSlice,
     sort: sortReducer,
-    auth: authReducer,
-    cart: cartReducer,
-    orders: ordersReducer,
-    decks: decksReducer,
-    complites: complitesReducer,
-    trucks: trucksReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, authMiddleware),
 });
-
+//
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

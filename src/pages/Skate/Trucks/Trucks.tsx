@@ -29,21 +29,7 @@ import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
 import Card from "../../../shared/components/ProductsComponents/Card";
 import Products from "../../../shared/components/ProductsComponents/Products/Products";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
-
-
-type TrucksType = {
-    category: string;
-    color: string;
-    company: string;
-    newPrice: string;
-    title: string;
-    img: string;
-    prevPrice: string;
-    size: string;
-    year: string;
-}
-
-
+import { FiltrationType } from "shared/config/types";
 
 function Trucks() {
   const dispatch = useAppDispatch();
@@ -53,13 +39,13 @@ function Trucks() {
   const sortedProducts = useSelector(
     (state: RootState) => state.sort.sortedProducts
   );
-  // console.log(data)
+ 
   useEffect(() => {
     setProducts(data);
   }, [data]);
 
   useEffect(() => {
-    setProducts(sortedProducts as TrucksType[]);
+    setProducts(sortedProducts as FiltrationType[]);
   }, [sortedProducts]);
 
 
@@ -81,14 +67,13 @@ function Trucks() {
   };
   
   // Инициализация состояния
-  const [products, setProducts] = useState<TrucksType[]>(data);
+  const [products, setProducts] = useState<FiltrationType[]>(data);
 
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchTrucksData())
     }
   }, [status, dispatch]);
-  //Redux toolkit
 
   // Обновление products при изменении data
   useEffect(() => {
@@ -125,9 +110,9 @@ function Trucks() {
     setSelectedColor(color); // Обновляем состояние выбранного цвета
   };
 
-  const uniqueColors = Array.from(new Set(data.map((product: TrucksType) => product.color))).sort();
-  const uniqueSizes = Array.from(new Set(data.map((product: TrucksType) => product.size))).sort();
-  const uniqueBrands = Array.from(new Set(data.map((product: TrucksType) => product.company))).sort();
+  const uniqueColors = Array.from(new Set(data.map((product: FiltrationType) => product.color))).sort();
+  const uniqueSizes = Array.from(new Set(data.map((product: FiltrationType) => product.size))).sort();
+  const uniqueBrands = Array.from(new Set(data.map((product: FiltrationType) => product.company))).sort();
 
 
   const handleSearch = (query: string) => {
@@ -151,7 +136,7 @@ function Trucks() {
   };
 
   function filteredData(
-    products: TrucksType[],
+    products: FiltrationType[],
     selected: string | null,
     query: string,
     selectedColor: string

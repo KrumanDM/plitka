@@ -20,43 +20,30 @@ import {
 } from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../Footer/Footer";
-import { Product } from "../../../shared/config/types";
+import { FiltrationType } from "../../../shared/config/types";
 import SelectColors from "../../../shared/components/SelectColors/SelectColors";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
 import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
-import { fetchDataDecks } from "../../../shared/api/decks/decksSlice";
 import Card from "../../../shared/components/ProductsComponents/Card";
 import { Header } from "../../../shared/components/Header/Header";
 import { useAppDispatch } from "../../../shared/config/hooks";
 import Products from "../../../shared/components/ProductsComponents/Products/Products";
-
-type SweatersType = {
-  category: string;
-  color: string;
-  company: string;
-  newPrice: string;
-  title: string;
-  img: string;
-  prevPrice: string;
-  size: string;
-  year: string;
-};
+import { useDecksData } from "shared/api/decks/fetchDecksData";
 
 function Sweaters() {
+  const { data: decks, isLoading, isError, error } = useDecksData();
   const dispatch = useAppDispatch();
-  const data = useSelector((state: RootState) => state.decks.data);
-  const status = useSelector((state: RootState) => state.decks.status);
   const navigate = useNavigate(); // Получите функцию navigate
   const sortedProducts = useSelector(
     (state: RootState) => state.sort.sortedProducts
   );
+  
+  useEffect(() => {
+    setProducts(decks || []);
+  }, [decks]);
 
   useEffect(() => {
-    setProducts(data);
-  }, [data]);
-
-  useEffect(() => {
-    setProducts(sortedProducts as Product[]);
+    setProducts(sortedProducts as FiltrationType[]);
   }, [sortedProducts]);
 
   const handleSelectChange = (event: any) => {
@@ -64,32 +51,26 @@ function Sweaters() {
     dispatch(setSortLabel(value));
 
     if (value === "По убыванию цены") {
-      dispatch(sortByPriceHighToLow(data));
+      dispatch(sortByPriceHighToLow(decks));
     } else if (value === "По возрастанию цены") {
-      dispatch(sortByPriceLowToHigh(data));
+      dispatch(sortByPriceLowToHigh(decks));
     } else if (value === "От A до Z") {
-      dispatch(sortByTitleAZ(data));
+      dispatch(sortByTitleAZ(decks));
     } else if (value === "От Z до A") {
-      dispatch(sortByTitleZA(data));
+      dispatch(sortByTitleZA(decks));
     } else if (value === "По новинкам") {
-      dispatch(sortByNewest(data));
+      dispatch(sortByNewest(decks));
     }
   };
 
   // Инициализация состояния
-  const [products, setProducts] = useState<Product[]>(data);
+ const [products, setProducts] = useState<FiltrationType[]>([]);
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchDataDecks());
+    if (decks) {
+      setProducts(decks);
     }
-  }, [status, dispatch]);
-  //Redux toolkit
-
-  // Обновление products при изменении data
-  useEffect(() => {
-    setProducts(data);
-  }, [data]);
+  }, [decks]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -110,7 +91,6 @@ function Sweaters() {
     (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
 
-  // фильтрация ЦВЕТА
   const handleColorChange = (
     event: SelectChangeEvent<string>,
     child: React.ReactNode
@@ -120,13 +100,15 @@ function Sweaters() {
   };
   // Создаются уникальные неповторяющиеся цвета с помощью new Set
   const uniqueColors = Array.from(
-    new Set(data.map((product: SweatersType) => product.color))
+    new Set(decks?.map((product: FiltrationType) => product.color) || [])
   ).sort();
+  
   const uniqueSizes = Array.from(
-    new Set(data.map((product: SweatersType) => product.size))
+    new Set(decks?.map((product: FiltrationType) => product.size) || [])
   ).sort();
+  
   const uniqueBrands = Array.from(
-    new Set(data.map((product: SweatersType) => product.company))
+    new Set(decks?.map((product: FiltrationType) => product.company) || [])
   ).sort();
 
   const handleSearch = (query: string) => {
@@ -150,7 +132,7 @@ function Sweaters() {
   };
 
   function filteredData(
-    products: Product[],
+    products: FiltrationType[],
     selected: string | null,
     query: string,
     selectedColor: string // Добавляем параметр для выбранного цвета
