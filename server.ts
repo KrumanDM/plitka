@@ -5,7 +5,6 @@ import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 
-
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -19,7 +18,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/ProductsBox?directConnection=true', 
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/products', productRoutes);
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

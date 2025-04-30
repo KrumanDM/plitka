@@ -1,5 +1,5 @@
 import express from 'express';
-import { Decks, Trucks, Complites } from '../models/productModel.js';
+import { Decks, Trucks, Complites } from '../models/productModel.ts';
 
 const router = express.Router();
 
