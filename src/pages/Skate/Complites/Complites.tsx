@@ -48,7 +48,7 @@ function Complites() {
   }, [sortedProducts]);
 
 
-  const handleSelectChange = (event: any) => {
+  const handleSelectChange = (event: SelectChangeEvent<string>) => {
     const value = event.target.value;
     dispatch(setSortLabel(value));
 
