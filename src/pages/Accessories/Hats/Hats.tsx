@@ -28,7 +28,7 @@ import Card from "../../../shared/components/ProductsComponents/Card";
 import { Header } from "../../../shared/components/Header/Header";
 import { useAppDispatch } from "../../../shared/config/hooks";
 import Products from "../../../shared/components/ProductsComponents/Products/Products";
-import { useDecksData } from "shared/api/decks/fetchDecksData";
+import { useDecksData } from "pages/Skate/Decks/useDecks";
 
 function Hats() {
   const { data: decks, isLoading, isError, error } = useDecksData();

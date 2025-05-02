@@ -28,7 +28,7 @@ import { FiltrationType } from "../../../shared/config/types";
 import SelectColors from "../../../shared/components/SelectColors/SelectColors";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
 import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
-import { useDecksData } from "shared/api/decks/fetchDecksData";
+import { useDecksData } from "pages/Skate/Decks/useDecks";
 
 function Decks() {
   const { data: decks, isLoading, isError, error } = useDecksData();

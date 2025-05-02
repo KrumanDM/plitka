@@ -1,22 +1,9 @@
 import { useQuery } from "react-query";
+import { Product } from "shared/config/types";
 
-
-export type ProductType = {
-  img: string;
-  title: string;
-  star: string;
-  reviews: string;
-  prevPrice: string;
-  newPrice: string;
-  company: string;
-  color: string;
-  category: string;
-  size: string;
-  year: string;
-};
 
 // Function to fetch data
-const fetchDecksData = async (): Promise<ProductType[]> => {
+const fetchDecksData = async (): Promise<Product[]> => {
   const response = await fetch('http://localhost:5001/api/products/decks');
   if (!response.ok) {
     throw new Error('Failed to fetch decks data');

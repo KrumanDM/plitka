@@ -1,20 +1,7 @@
-// useProducts.ts
 import { useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
+import { Product } from 'shared/config/types';
 
-interface Product {
-  img: string;
-  title: string;
-  star: string;
-  reviews: string;
-  prevPrice: string;
-  newPrice: string;
-  company: string;
-  color: string;
-  category: string;
-  size: string;
-  year: string;
-}
 
 const fetchProducts = async (query: string): Promise<Product[]> => {
     const results = await Promise.allSettled([
@@ -33,8 +20,8 @@ const fetchProducts = async (query: string): Promise<Product[]> => {
   // Объединяем массивы в один массив
   const flatData = data.flat();
 
-  // Преобразуем данные в нужный формат
-  const formattedData = flatData.map((product: any) => ({
+  // Преобразуем данные в нужный формат 
+  const formattedData = flatData.map((product: Product) => ({
     img: product.img,
     title: product.title,
     star: product.star,

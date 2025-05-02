@@ -22,26 +22,25 @@ import {
 } from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../Footer/Footer";
-import { fetchComplitesData } from "../../../shared/api/complites/dataComplitesSlice";
 import SelectColors from "../../../shared/components/SelectColors/SelectColors";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
 import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
 import Card from "../../../shared/components/ProductsComponents/Card";
 import Products from "../../../shared/components/ProductsComponents/Products/Products";
 import { FiltrationType } from "shared/config/types";
+import { useComplitesData } from "pages/Skate/Complites/useComplites";
 
 function Complites() {
+  const { data: complites, isLoading, isError, error } = useComplitesData();
   const dispatch = useAppDispatch();
-  const data = useSelector((state: RootState) => state.complites.data);
-  const status = useSelector((state: RootState) => state.complites.status);
   const navigate = useNavigate(); // Получите функцию navigate
   const sortedProducts = useSelector(
     (state: RootState) => state.sort.sortedProducts
   );
 
   useEffect(() => {
-    setProducts(data);
-  }, [data]);
+    setProducts(complites || []);
+  }, [complites]);
 
   useEffect(() => {
     setProducts(sortedProducts as FiltrationType[]);
@@ -53,32 +52,26 @@ function Complites() {
     dispatch(setSortLabel(value));
 
     if (value === "По убыванию цены") {
-      dispatch(sortByPriceHighToLow(data));
+      dispatch(sortByPriceHighToLow(complites));
     } else if (value === "По возрастанию цены") {
-      dispatch(sortByPriceLowToHigh(data));
+      dispatch(sortByPriceLowToHigh(complites));
     } else if (value === "От A до Z") {
-      dispatch(sortByTitleAZ(data));
+      dispatch(sortByTitleAZ(complites));
     } else if (value === "От Z до A") {
-      dispatch(sortByTitleZA(data));
+      dispatch(sortByTitleZA(complites));
     } else if (value === "По новинкам") {
-      dispatch(sortByNewest(data));
+      dispatch(sortByNewest(complites));
     }
   };
 
   // Инициализация состояния
-  const [products, setProducts] = useState<FiltrationType[]>(data);
+  const [products, setProducts] = useState<FiltrationType[]>([]);
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchComplitesData());
+    if (complites) {
+      setProducts(complites);
     }
-  }, [status, dispatch]);
-  //Redux toolkit
-
-  // Обновление products при изменении data
-  useEffect(() => {
-    setProducts(data);
-  }, [data]);
+  }, [complites]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -108,9 +101,18 @@ function Complites() {
     setSelectedColor(color); // Обновляем состояние выбранного цвета
   };
 
-  const uniqueColors = Array.from(new Set(data.map((product: FiltrationType) => product.color))).sort();
-const uniqueSizes = Array.from(new Set(data.map((product: FiltrationType) => product.size))).sort();
-const uniqueBrands = Array.from(new Set(data.map((product: FiltrationType) => product.company))).sort();
+  // Создаются уникальные неповторяющиеся цвета с помощью new Set
+  const uniqueColors = Array.from(
+    new Set(complites?.map((product: FiltrationType) => product.color) || [])
+  ).sort();
+  
+  const uniqueSizes = Array.from(
+    new Set(complites?.map((product: FiltrationType) => product.size) || [])
+  ).sort();
+  
+  const uniqueBrands = Array.from(
+    new Set(complites?.map((product: FiltrationType) => product.company) || [])
+  ).sort();
 
 
   const handleSearch = (query: string) => {

@@ -5,9 +5,9 @@ interface AuthState {
   isRegistered: boolean;
   isLogin: boolean;
   redirectToProfile: boolean;
-  loginErrorMessage: string | null; // Изменено на string | null
-  registrationErrorMessage: string | null; // Изменено на string | null
-  successMessage: string; // Изменено на string
+  loginErrorMessage: string | null;
+  registrationErrorMessage: string | null;
+  successMessage: string;
 }
 
 const initialState: AuthState = {
@@ -71,8 +71,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     resetError(state) {
-      state.loginErrorMessage = null; // Сброс сообщения об ошибке входа
-      state.registrationErrorMessage = null; // Сброс сообщения об ошибке регистрации
+      state.loginErrorMessage = null;
+      state.registrationErrorMessage = null;
     },
     checkUser (state) {
       const userEmail = localStorage.getItem('userEmail');
@@ -84,8 +84,8 @@ const authSlice = createSlice({
     },
     toggleLogin(state) {
       state.isLogin = !state.isLogin;
-      state.loginErrorMessage = null; // Сброс сообщения об ошибке входа
-      state.registrationErrorMessage = null; // Сброс сообщения об ошибке регистрации
+      state.loginErrorMessage = null; 
+      state.registrationErrorMessage = null;
     },
   },
   extraReducers: (builder) => {

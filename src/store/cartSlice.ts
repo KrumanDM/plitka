@@ -1,4 +1,3 @@
-// store/cartSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '../shared/config/types';
 

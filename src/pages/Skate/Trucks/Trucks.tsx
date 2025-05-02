@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import s from "./Trucks.module.css";
 import Navigation from "../../../shared/components/ProductsComponents/Nav"
-
 import { Header } from "../../../shared/components/Header/Header";
 import { useMediaQuery } from "react-responsive";
 import * as React from "react";
@@ -24,25 +23,24 @@ import {
 } from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../Footer/Footer";
-import { fetchTrucksData } from "../../../shared/api/trucks/dataTrucksSlice";
 import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
 import Card from "../../../shared/components/ProductsComponents/Card";
 import Products from "../../../shared/components/ProductsComponents/Products/Products";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
 import { FiltrationType } from "shared/config/types";
+import { useTrucksData } from "./useTrucks";
 
 function Trucks() {
+  const { data: trucks, isLoading, isError, error } = useTrucksData();
   const dispatch = useAppDispatch();
-  const data = useSelector((state: RootState) => state.trucks.data);
-  const status = useSelector((state: RootState) => state.trucks.status);
   const navigate = useNavigate(); // Получите функцию navigate
   const sortedProducts = useSelector(
     (state: RootState) => state.sort.sortedProducts
   );
  
   useEffect(() => {
-    setProducts(data);
-  }, [data]);
+    setProducts(trucks || []);
+  }, [trucks]);
 
   useEffect(() => {
     setProducts(sortedProducts as FiltrationType[]);
@@ -54,33 +52,26 @@ function Trucks() {
     dispatch(setSortLabel(value));
 
     if (value === "По убыванию цены") {
-      dispatch(sortByPriceHighToLow(data));
+      dispatch(sortByPriceHighToLow(trucks));
     } else if (value === "По возрастанию цены") {
-      dispatch(sortByPriceLowToHigh(data));
+      dispatch(sortByPriceLowToHigh(trucks));
     } else if (value === "От A до Z") {
-      dispatch(sortByTitleAZ(data));
+      dispatch(sortByTitleAZ(trucks));
     } else if (value === "От Z до A") {
-      dispatch(sortByTitleZA(data));
+      dispatch(sortByTitleZA(trucks));
     } else if (value === "По новинкам") {
-      dispatch(sortByNewest(data));
+      dispatch(sortByNewest(trucks));
     }
   };
   
   // Инициализация состояния
-  const [products, setProducts] = useState<FiltrationType[]>(data);
+  const [products, setProducts] = useState<FiltrationType[]>([]);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchTrucksData())
+    if (trucks) {
+      setProducts(trucks);
     }
-  }, [status, dispatch]);
-
-  // Обновление products при изменении data
-  useEffect(() => {
-    if (data.length > 0) {
-      setProducts(data);
-    }
-  }, [data]);
+  }, [trucks]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -110,9 +101,18 @@ function Trucks() {
     setSelectedColor(color); // Обновляем состояние выбранного цвета
   };
 
-  const uniqueColors = Array.from(new Set(data.map((product: FiltrationType) => product.color))).sort();
-  const uniqueSizes = Array.from(new Set(data.map((product: FiltrationType) => product.size))).sort();
-  const uniqueBrands = Array.from(new Set(data.map((product: FiltrationType) => product.company))).sort();
+  // Создаются уникальные неповторяющиеся цвета с помощью new Set
+  const uniqueColors = Array.from(
+    new Set(trucks?.map((product: FiltrationType) => product.color) || [])
+  ).sort();
+  
+  const uniqueSizes = Array.from(
+    new Set(trucks?.map((product: FiltrationType) => product.size) || [])
+  ).sort();
+  
+  const uniqueBrands = Array.from(
+    new Set(trucks?.map((product: FiltrationType) => product.company) || [])
+  ).sort();
 
 
   const handleSearch = (query: string) => {
