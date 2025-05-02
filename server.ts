@@ -1,9 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import userRoutes from './routes/userRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
-import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes';
+import orderRoutes from './routes/orderRoutes';
+import productRoutes from './routes/productRoutes';
 
 const app = express();
 const PORT = process.env.PORT || 5001;

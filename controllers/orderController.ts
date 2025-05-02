@@ -1,6 +1,7 @@
-import { Order } from '../models/orderModel.ts';
+import { Order } from '../models/orderModel';
+import { Request, Response } from 'express';
 
-export const createOrder = async (req, res) => {
+export const createOrder = async (req: Request, res: Response) => {
   try {
     const { items, totalPrice, userEmail, name, phone } = req.body;
     const newOrder = new Order({ items, totalPrice, userEmail, name, phone });
@@ -11,7 +12,7 @@ export const createOrder = async (req, res) => {
   }
 };
 
-export const getOrdersByEmail = async (req, res) => {
+export const getOrdersByEmail = async (req: Request, res: Response) => {
   try {
     const { email } = req.params;
     const orders = await Order.find({ userEmail: email });
@@ -20,7 +21,7 @@ export const getOrdersByEmail = async (req, res) => {
     res.status(500).send({ message: 'Ошибка при получении заказов' });
   }
 };
-export const deleteOrderById = async (req, res) => {
+export const deleteOrderById = async (req: Request, res: Response) => {
   try {
     const { orderId } = req.params;
     const deletedOrder = await Order.findByIdAndDelete(orderId);

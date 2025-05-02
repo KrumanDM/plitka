@@ -1,7 +1,8 @@
-import { User } from '../models/userModel.ts';
+import { User } from '../models/userModel';
 import bcrypt from 'bcrypt';
+import { Request, Response } from 'express';
 
-export const registerUser = async (req, res) => {
+export const registerUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const existingUser = await User.findOne({ email });
@@ -17,7 +18,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-export const loginUser = async (req, res) => {
+export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
