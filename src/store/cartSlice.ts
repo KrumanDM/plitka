@@ -138,6 +138,7 @@ const cartSlice = createSlice({
       state.items = [];
       state.quantities = {};
       state.totalPrice = 0;
+      localStorage.removeItem("cart");
     },
     setCart: (state, action: PayloadAction<CartState>) => {
       state.items = action.payload.items;
