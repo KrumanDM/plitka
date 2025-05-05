@@ -6,6 +6,7 @@ import { Header } from "../../../shared/components/Header/Header";
 import { deleteOrder, getOrders } from "./orderSlice";
 import s from "./UserProfile.module.css";
 import Button from "../../../shared/components/Button/Button";
+import { Alert, Snackbar } from "@mui/material";
 
 type OrderItem = {
   title: string;
@@ -24,16 +25,23 @@ type Order = {
 
 const UserProfile = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const orders = useSelector((state: RootState) => state.orders.orders as Order[]);
+  const orders = useSelector(
+    (state: RootState) => state.orders.orders as Order[]
+  );
 
   const [isOrderDeleted, setIsOrderDeleted] = useState(false); //Что бы срабатывал только при удалении заказа
-  const [isModalOpenForOrder, setIsModalOpenForOrder] = useState<{ [key: string]: boolean }>({});
+  const [isModalOpenForOrder, setIsModalOpenForOrder] = useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const updateIsModalOpenForOrder = (orderId: string, isOpen: boolean) => {
     setIsModalOpenForOrder((prev) => ({ ...prev, [orderId]: isOpen }));
   };
 
-  const isModalOpenForOrderId = (orderId: string) => isModalOpenForOrder[orderId];
+  const isModalOpenForOrderId = (orderId: string) =>
+    isModalOpenForOrder[orderId];
 
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
@@ -51,6 +59,7 @@ const UserProfile = () => {
   const handleDeleteOrder = (orderId: string) => {
     dispatch(deleteOrder(orderId));
     setIsOrderDeleted(true);
+    setOpenSnackbar(true);
   };
 
   const formatOrderId = (id: string) => id.slice(-5);
@@ -84,7 +93,10 @@ const UserProfile = () => {
               <b className={s.totalPrice}>
                 Итоговая цена: {order.totalPrice}byn
               </b>
-              <Button onClick={() => updateIsModalOpenForOrder(order._id, true)} style={{width: '30%',padding:'8px'}}>
+              <Button
+                onClick={() => updateIsModalOpenForOrder(order._id, true)}
+                style={{ width: "30%", padding: "8px" }}
+              >
                 Отменить заказ
               </Button>
             </div>
@@ -99,11 +111,17 @@ const UserProfile = () => {
                         handleDeleteOrder(order._id);
                         updateIsModalOpenForOrder(order._id, false);
                       }}
-                      style={{width: '45%', padding: '0px', }}
+                      style={{ width: "45%", padding: "0px" }}
                     >
                       Отменить заказ
                     </Button>
-                    <Button type="button" onClick={() => updateIsModalOpenForOrder(order._id, false)}style={{width: '45%', padding: '0px',}}>
+                    <Button
+                      type="button"
+                      onClick={() =>
+                        updateIsModalOpenForOrder(order._id, false)
+                      }
+                      style={{ width: "45%", padding: "0px" }}
+                    >
                       Закрыть
                     </Button>
                   </div>
@@ -113,9 +131,25 @@ const UserProfile = () => {
           </div>
         ))
       )}
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={() => setOpenSnackbar(false)}
+      >
+        <Alert
+          onClose={() => setOpenSnackbar(false)}
+          severity="success"
+          variant="filled"
+          sx={{ width: "100%", backgroundColor: "#405cf5" }}
+        >
+          Заказ успешно удален!
+        </Alert>
+      </Snackbar>
       <Footer />
     </div>
   );
 };
 
 export default UserProfile;
+
