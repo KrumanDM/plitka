@@ -111,95 +111,51 @@ function Sweaters() {
     new Set(decks?.map((product: FiltrationType) => product.company) || [])
   ).sort();
 
-  const handleSearch = (query: string) => {
-    // Найдите продукт по заголовку
-    const foundProduct = products.find(
-      (product) => product.title.toLowerCase() === query.toLowerCase()
-    );
-
-    // Если продукт найден, переходите на его страницу
-    if (foundProduct) {
-      navigate(
-        `/card/${foundProduct.title}/${
-          foundProduct.newPrice
-        }/${encodeURIComponent(foundProduct.img)}/${foundProduct.company}/${
-          foundProduct.color
-        }/${foundProduct.size}`
-      );
-    } else {
-      alert("Продукт не найден"); // Уведомление о том, что продукт не найден
-    }
-  };
-
   function filteredData(
     products: FiltrationType[],
     selected: string | null,
     query: string,
-    selectedColor: string // Добавляем параметр для выбранного цвета
-  ) {
-    let filteredProducts = products;
-
-    // Filtering Input Items
-    if (query) {
-      filteredProducts = filteredItems;
-    }
-
-    // Applying selected filter
-    if (selected) {
-      filteredProducts = filteredProducts.filter(
-        ({ category, color, company, newPrice, title }) =>
-          category === selected ||
-          color === selected ||
-          company === selected ||
-          newPrice === selected ||
-          title === selected
-      );
-    }
-
-    // Фильтрация по цвету
-    if (selectedColor) {
-      filteredProducts = filteredProducts.filter(
-        (product) => product.color === selectedColor
-      );
-    }
-
-    if (activeSizes.length > 0) {
-      filteredProducts = filteredProducts.filter((product) =>
-        activeSizes.includes(product.size)
-      );
-    }
-    if (activeBrands.length > 0) {
-      filteredProducts = filteredProducts.filter((product) =>
-        activeBrands.includes(product.company)
-      );
-    }
-
-    return filteredProducts.map(
-      ({
-        img,
-        title,
-        prevPrice,
-        newPrice,
-        size,
-        company,
-        color,
-      }) => (
-        <Card
-          key={`${title}-${newPrice}-${img}`}
-          img={img}
-          title={title}
-          prevPrice={prevPrice}
-          newPrice={newPrice}
-          size={size}
-          company={company}
-          color={color}
-        />
-      )
-    );
+    selectedColor: string
+  ): FiltrationType[] {
+    return products.filter((product) => {
+      if (query && !product.title.toLowerCase().includes(query.toLowerCase())) {
+        return false;
+      }
+      if (selected && ![product.category, product.color, product.company, product.newPrice, product.title].includes(selected)) {
+        return false;
+      }
+      if (selectedColor && product.color !== selectedColor) {
+        return false;
+      }
+      if (activeSizes.length > 0 && !activeSizes.includes(product.size)) {
+        return false;
+      }
+      if (activeBrands.length > 0 && !activeBrands.includes(product.company)) {
+        return false;
+      }
+      return true;
+    });
   }
-
-  const result = filteredData(products, selectedCategory, query, selectedColor);
-
+  
+  // Отдельная функция для рендеринга карточек
+  function renderCards(filteredProducts: FiltrationType[]) {
+    return filteredProducts.map(({ img, title, prevPrice, newPrice, size, company, color }) => (
+      <Card
+        key={`${title}-${newPrice}-${img}`}
+        img={img}
+        title={title}
+        prevPrice={prevPrice}
+        newPrice={newPrice}
+        size={size}
+        company={company}
+        color={color}
+      />
+    ));
+  }
+  
+  const filteredProducts = filteredData(products, selectedCategory, query, selectedColor);
+  const result = renderCards(filteredProducts);
+  
   useEffect(() => {
     if (result) {
       setCardCount(result.length);
