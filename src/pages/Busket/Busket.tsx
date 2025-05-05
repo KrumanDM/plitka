@@ -16,6 +16,7 @@ import {
 import { Item } from "../../shared/config/types";
 import OrderSuccessModal from "./OrderSuccessModal/OrderSuccessModal";
 import Button from "../../shared/components/Button/Button";
+import { Footer } from "pages/Footer/Footer";
 
 type BusketPropsType = {
   cartItems: Item[];
@@ -305,6 +306,7 @@ const Busket: FC<BusketPropsType> = () => {
         onClose={() => setIsOrderSuccessModalOpen(false)}
       />
     )}
+    <Footer/>
     </>
   );
 };

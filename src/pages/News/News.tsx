@@ -5,6 +5,7 @@ import s from "./News.module.css";
 import jante_633 from "../../assets/images/news/Jante_633.webp"
 import Austyn_Gillette from "../../assets/images/news/Austyn_Gillette.webp"
 import Rassvet_Blue from "../../assets/images/news/Rassvet_Blue.webp"
+import { Footer } from "pages/Footer/Footer";
 
 const News = () => {
   const news = [
@@ -52,6 +53,7 @@ const News = () => {
           </div>
         ))}
       </div>
+      <Footer/>
     </div>
   );
 };
