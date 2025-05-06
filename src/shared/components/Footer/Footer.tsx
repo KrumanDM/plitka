@@ -21,11 +21,11 @@ export const Footer = () => {
           </svg>
         </a>
         <a className={s.films} href={'https://youtu.be/BuxEPJ8bDXU?si=4CJHaZ_YzrBjw335'}>
-        <h2>Films</h2>
+        <h3>Films</h3>
         </a>
-        <h2>Пн—Вс 10:00—21:00 </h2>
+        <h3>Пн—Вс 10:00—21:00 </h3>
         
-        <h2>Т. +375 (29) 715 55 40</h2>
+        <h3>Т. +375 (29) 715 55 40</h3>
         <div className={s.copyright}>Copyright © 2025 Plitka</div>
     </div>
 }

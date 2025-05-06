@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Footer } from "../../Footer/Footer";
+import { Footer } from "../../../shared/components/Footer/Footer";
 import { AppDispatch, RootState } from "../../../store/store";
 import { Header } from "../../../shared/components/Header/Header";
 import { deleteOrder, getOrders } from "./orderSlice";
@@ -78,7 +78,7 @@ const UserProfile = () => {
           <div key={order._id} className={s.userProfileContainer}>
             <h1 className={s.orderTitle}>Заказ №{formatOrderId(order._id)}</h1>
             {order.items.map((item: OrderItem) => (
-              <div key={item.img} className={s.orderItem}>
+              <h3 key={item.img} className={s.orderItem}>
                 <img className={s.image} src={item.img}></img>
                 <div className={s.orderItemTitle}>
                   <p>
@@ -87,7 +87,7 @@ const UserProfile = () => {
                   <p>Цена: {item.newPrice}byn</p>
                   <p>Количество: {item.quantity}</p>
                 </div>
-              </div>
+              </h3>
             ))}
             <div className={s.buttonContainer}>
               <b className={s.totalPrice}>

@@ -16,7 +16,7 @@ import {
 import { Item } from "../../shared/config/types";
 import OrderSuccessModal from "./OrderSuccessModal/OrderSuccessModal";
 import Button from "../../shared/components/Button/Button";
-import { Footer } from "pages/Footer/Footer";
+import { Footer } from "shared/components/Footer/Footer";
 
 type BusketPropsType = {
   cartItems: Item[];
@@ -124,7 +124,7 @@ const Busket: FC<BusketPropsType> = () => {
                   <img className={s.tovar} src={item.img} alt={item.title} />
                 </div>
                 <div className={s.titleAndCountMobile}>
-                  <div className={s.titleDeck}>{item.title}</div>
+                  <h3 className={s.titleDeck}>{item.title}</h3>
                   <div className={s.countButtonsMobile}>
                     <Button
                       type="button"
@@ -134,7 +134,7 @@ const Busket: FC<BusketPropsType> = () => {
                     >
                       -
                     </Button>
-                    <h2 className={s.quantity}>{item.quantity}</h2>
+                    <h3 className={s.quantity}>{item.quantity}</h3>
                     <Button
                       type="button"
                       className={s.buttonPlusMinus}
@@ -145,14 +145,14 @@ const Busket: FC<BusketPropsType> = () => {
                     </Button>
                   </div>
                 </div>
-                <div className={s.itogo}>{item.totalPrice}byn</div>
+                <h3 className={s.itogo}>{item.totalPrice}byn</h3>
               </div>
             ))}
           </div>
           <div className={s.generalPriceAndButtonsMobile}>
-            <div className={s.generalPriceMobile}>
-              Cумма товаров: <b>{generalPrice}byn</b>
-            </div>
+            <h3 className={s.generalPriceMobile}>
+              Cумма товаров: {generalPrice}byn
+            </h3>
             <div className={s.buttonsContainerMobile}>
               <Button type="button" className={s.button} onClick={handleClearCart}>
                 Очистить корзину

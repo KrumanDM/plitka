@@ -1,5 +1,5 @@
 import react from "react";
-import { Footer } from "../Footer/Footer";
+import { Footer } from "../../shared/components/Footer/Footer";
 import { Header } from "../../shared/components/Header/Header";
 import { Main } from "../Main/Main";
 

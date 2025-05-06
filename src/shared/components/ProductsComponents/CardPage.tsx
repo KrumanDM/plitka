@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Footer } from "../../../pages/Footer/Footer";
+import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import s from "./CardPage.module.css";
 import { useDispatch, useSelector } from "react-redux";

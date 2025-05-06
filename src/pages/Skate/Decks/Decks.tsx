@@ -23,7 +23,7 @@ import {
   sortByTitleZA,
 } from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../../Footer/Footer";
+import { Footer } from "../../../shared/components/Footer/Footer";
 import { FiltrationType } from "../../../shared/config/types";
 import SelectColors from "../../../shared/components/SelectColors/SelectColors";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";

@@ -22,7 +22,7 @@ import {
   sortByTitleZA,
 } from "../../../shared/api/sortSlice";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../../Footer/Footer";
+import { Footer } from "../../../shared/components/Footer/Footer";
 import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
 import Card from "../../../shared/components/ProductsComponents/Card";
 import Products from "../../../shared/components/ProductsComponents/Products/Products";
