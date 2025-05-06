@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { ChangeEvent, FC, useEffect, useRef } from "react";
 import s from "./SearchForm.module.css";
 import closeIcon from "./closeOutline.svg";
 
@@ -15,9 +15,19 @@ export const SearchForm: FC<SearchFormProps> = ({
   handleOpenSearch,
   handleCloseResults,
 }) => {
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
-    <div className={s.searchContainer}>
+    <div className={s.searchContainer} onClick={() => inputRef.current?.focus()}>
       <input
+        ref={inputRef}
         className={s.searchInput}
         type="text"
         value={query}

@@ -18,6 +18,7 @@ import OrderSuccessModal from "./OrderSuccessModal/OrderSuccessModal";
 import Button from "../../shared/components/Button/Button";
 import { Footer } from "shared/components/Footer/Footer";
 
+
 type BusketPropsType = {
   cartItems: Item[];
 };
