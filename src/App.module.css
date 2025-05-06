@@ -24,8 +24,11 @@ body {
 
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 /*=============== VARIABLES CSS ===============*/
+  
 :root {
   --header-height: 3.5rem;
 
@@ -41,6 +44,9 @@ body {
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Syne", sans-serif;
+  --standart-font: "Montserrat", sans-serif;;
+  --main-font: "Rubik", sans-serif;
+  --mainly-font: "Roboto", sans-serif;
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
 
@@ -76,12 +82,11 @@ html {
 body,
 input,
 button {
-  font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
 
 body {
-  background-color: var(--body-color);
+  background-color: var(--standart-font);
   color: var(--text-color);
 }
 

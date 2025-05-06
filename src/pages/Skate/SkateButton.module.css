@@ -4,7 +4,7 @@
   padding-top: 27px;
   background-color: transparent;
   color: black;
-  
+  font-family: var(--main-font);
 }
 .skateContainer::after {
   content: "";

@@ -176,23 +176,23 @@ const Busket: FC<BusketPropsType> = () => {
       ) : (
         <div className={s.busketContainer}>
           
-          <div className={s.busketDescription}>
+          <h3 className={s.busketDescription}>
             <div className={s.tovar}>Товар</div>
             <div className={s.threeDescription}>
               <div className={s.cena}>Цена</div>
               <div className={s.colvo}>Количество</div>
               <div className={s.itogo}>Итого</div>
             </div>
-          </div>
+          </h3>
           <div>
             {cartItems.map((item: ItemPropsType, index: number) => (
               <div className={`${s.products} ${s.itemBorder}`} key={index}>
                 <div className={s.tovar1}>
                   <img className={s.tovar} src={item.img} alt={item.title} />
-                  <div className={s.titleDeck}>{item.title}</div>
+                  <h3 className={s.titleDeck}>{item.title}</h3>
                 </div>
                 <div className={s.threeDescription}>
-                  <div className={s.cena}>{item.newPrice}byn</div>
+                  <h3 className={s.cena}>{item.newPrice}byn</h3>
                   <div className={s.colvo}>
                     <Button
                       type="button"
@@ -202,7 +202,7 @@ const Busket: FC<BusketPropsType> = () => {
                     >
                       -
                     </Button>
-                    <h2 className={s.quantity}>{item.quantity}</h2>
+                    <h3 className={s.quantity}>{item.quantity}</h3>
                     <Button
                       type="button"
                       
@@ -210,18 +210,18 @@ const Busket: FC<BusketPropsType> = () => {
                       style={{paddingRight: '20px',paddingLeft: '12px', paddingTop:'2px', width: '20px', height: '0px'}}
                     
                     >
-                      +
+                      + 
                     </Button>
                   </div>
-                  <div className={s.itogo}>{item.totalPrice}byn</div>
+                  <h3 className={s.itogo}>{item.totalPrice}byn</h3>
                 </div>
               </div>
             ))}
           </div>
           <div className={s.generalPriceAndButtons}>
-            <div className={s.generalPrice}>
-              Cумма товаров: <b>{generalPrice}byn</b>
-            </div>
+            <h3 className={s.generalPrice}>
+              Cумма товаров: {generalPrice}byn
+            </h3>
             <div className={s.buttonsContainer}>
               <Button type="button"  onClick={handleClearCart} style={{ width: "20%" }}>
                 Очистить корзину
