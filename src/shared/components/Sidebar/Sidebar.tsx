@@ -10,7 +10,6 @@ type SidebarProps = {
 };
 
 export const Sidebar = ({ onClickOutside }: SidebarProps) => {
-  
   const [selectedComponent, setSelectedComponent] = useState("");
 
   const handleClick = (component: string) => {
@@ -32,20 +31,15 @@ export const Sidebar = ({ onClickOutside }: SidebarProps) => {
   };
 
   return (
-    <div className={s.sidebar1} >
+    <div className={s.sidebar1}>
       <div className={s.borderUnderClose}></div>
-      <div className={s.storeContainer1} >
-        
-        <div className={s.sidebarContent} >
-          
-            <SidebarClothing onClickOutside={onClickOutside} />
-          
-         
-            <SidebarAccessories onClickOutside={onClickOutside} />
-          
-          
-            <SidebarSkate onClickOutside={onClickOutside} />
-          
+      <div className={s.storeContainer1}>
+        <div className={s.sidebarContent}>
+          <SidebarClothing onClickOutside={onClickOutside} />
+
+          <SidebarAccessories onClickOutside={onClickOutside} />
+
+          <SidebarSkate onClickOutside={onClickOutside} />
         </div>
         <img
           className={s.closeButton}
@@ -55,7 +49,6 @@ export const Sidebar = ({ onClickOutside }: SidebarProps) => {
           id={"hw5-menu-close"}
         />
       </div>
-      
     </div>
   );
 };

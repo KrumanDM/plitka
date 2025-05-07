@@ -3,7 +3,6 @@ import s from "./Complites.module.css";
 import Navigation from "../../../shared/components/ProductsComponents/Nav"
 import { Header } from "../../../shared/components/Header/Header";
 import { useMediaQuery } from "react-responsive";
-import * as React from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -20,7 +19,6 @@ import {
   sortByTitleAZ,
   sortByTitleZA,
 } from "../../../shared/api/sortSlice";
-import { useNavigate } from "react-router-dom";
 import { Footer } from "../../../shared/components/Footer/Footer";
 import SelectColors from "../../../shared/components/SelectColors/SelectColors";
 import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
@@ -33,7 +31,6 @@ import { useComplitesData } from "pages/Skate/Complites/useComplites";
 function Complites() {
   const { data: complites, isLoading, isError, error } = useComplitesData();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate(); // Получите функцию navigate
   const sortedProducts = useSelector(
     (state: RootState) => state.sort.sortedProducts
   );
@@ -73,32 +70,24 @@ function Complites() {
     }
   }, [complites]);
 
-  const [selectedCategory, setSelectedCategory] = useState("");
-
   const activeSizes = useSelector((state: RootState) => state.size.activeSizes);
   const activeBrands = useSelector(
     (state: RootState) => state.brand.activeBrands
   );
   const label = useSelector((state: RootState) => state.sort.label);
   const [selectedColor, setSelectedColor] = useState("");
-  const [cardCount, setCardCount] = useState(0); //показывает количество товаров
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [query, setQuery] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
-  const filteredItems = products.filter(
-    (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
-  );
 
-  // фильтрация ЦВЕТА
   const handleColorChange = (
-    event: SelectChangeEvent<string>,
-    child: React.ReactNode
+    event: SelectChangeEvent<string>
   ) => {
     const color = event.target.value;
-    setSelectedColor(color); // Обновляем состояние выбранного цвета
+    setSelectedColor(color);
   };
 
   // Создаются уникальные неповторяющиеся цвета с помощью new Set
@@ -116,15 +105,11 @@ function Complites() {
 
   function filteredData(
     products: FiltrationType[],
-    selected: string | null,
     query: string,
     selectedColor: string
   ): FiltrationType[] {
     return products.filter((product) => {
       if (query && !product.title.toLowerCase().includes(query.toLowerCase())) {
-        return false;
-      }
-      if (selected && ![product.category, product.color, product.company, product.newPrice, product.title].includes(selected)) {
         return false;
       }
       if (selectedColor && product.color !== selectedColor) {
@@ -139,7 +124,6 @@ function Complites() {
       return true;
     });
   }
-  
   // Отдельная функция для рендеринга карточек
   function renderCards(filteredProducts: FiltrationType[]) {
     return filteredProducts.map(({ img, title, prevPrice, newPrice, size, company, color }) => (
@@ -156,19 +140,13 @@ function Complites() {
     ));
   }
   
-  const filteredProducts = filteredData(products, selectedCategory, query, selectedColor);
+  const filteredProducts = filteredData(products, query, selectedColor);
   const result = renderCards(filteredProducts);
-
-  useEffect(() => {
-    if (result) {
-      setCardCount(result.length);
-    }
-  }, [result]);
+  const cardCount = result.length;
 
   return (
     <>
       <Header />
-
       <div className={s.sweatersContainer}>
         {isMobile ? (
           <>
