@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./SocksButton.module.css";
-// Импортируем компонент Link из react-router-dom
 import { Link } from "react-router-dom";
 
 export const SocksButton = () => {

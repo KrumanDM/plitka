@@ -1,5 +1,4 @@
 .decksContainer:hover {
-  /* Добавляем нижнюю границу для ссылки */
   border-bottom: 1px solid black;
 }
 .parametersContainer {
@@ -10,7 +9,6 @@
 }
 .countAndNavigation {
   display: flex;
-  /* border-bottom: 2px solid #f3f3f3; */
   justify-content: space-between;
 }
 .numberAndNavigation {
@@ -18,7 +16,6 @@
 }
 .cardCount {
   padding: 20px;
-
   color: rgb(147, 147, 147);
 }
 .sortContainer {
@@ -56,7 +53,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-
     align-items: normal;
     align-content: normal;
     padding: 0;

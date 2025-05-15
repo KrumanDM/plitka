@@ -49,7 +49,7 @@ const validate = (values: { email: string; password: string }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessageReg, setShowErrorMessageReg] = useState(false);
   const [showErrorMessageLog, setShowErrorMessageLog] = useState(false);
-  const [isLoginForm, setIsLoginForm] = useState(true); // New state variable
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
   useEffect(() => {
     dispatch(checkUser ());
@@ -60,9 +60,9 @@ const validate = (values: { email: string; password: string }) => {
       setShowSuccessMessage(true);
       const timer = setTimeout(() => {
         setShowSuccessMessage(false);
-      }, 3000); // Скрыть сообщение через 3 секунды
+      }, 3000);
 
-      return () => clearTimeout(timer); // Очистить таймер при размонтировании
+      return () => clearTimeout(timer);
     }
   }, [successMessage]);
 
@@ -73,9 +73,9 @@ const validate = (values: { email: string; password: string }) => {
         setShowErrorMessageReg(false);
         // Сбросить сообщение об ошибке
          // или другой метод для сброса сообщения
-      }, 3000); // Скрыть сообщение через 3 секунды
+      }, 3000);
   
-      return () => clearTimeout(timer); // Очистить таймер при размонтировании
+      return () => clearTimeout(timer);
     }
   }, [registrationErrorMessage]);
  
@@ -84,18 +84,18 @@ const validate = (values: { email: string; password: string }) => {
       setShowErrorMessageLog(true);
       const timer = setTimeout(() => {
         setShowErrorMessageLog(false);
-      }, 3000); // Скрыть сообщение через 3 секунды
+      }, 3000);
 
-      return () => clearTimeout(timer); // Очистить таймер при размонтировании
+      return () => clearTimeout(timer);
     }
   }, [loginErrorMessage]);
 
   const handleLoginClick = () => {
-    setIsLoginForm(true); // Set to login form
+    setIsLoginForm(true);
   };
 
   const handleRegisterClick = () => {
-    setIsLoginForm(false); // Set to registration form
+    setIsLoginForm(false); 
   };
 
   if (redirectToProfile || isLogin) {
@@ -110,7 +110,7 @@ const validate = (values: { email: string; password: string }) => {
           {isLoginForm ? (
             <>
               <h1>Авторизация</h1>
-              {showErrorMessageLog && <div className={s.error}>{loginErrorMessage}</div>} {/* Display login error message */}
+              {showErrorMessageLog && <div className={s.error}>{loginErrorMessage}</div>}
               <Formik
                 initialValues={{ email: "", password: "" }}
                 validate={validate}

@@ -8,16 +8,12 @@ import { TrucksButton } from "./Trucks/TrucksButton";
 ;
 
 export const Skate = () => {
-  // Создаем переменную состояния для хранения видимости блока меню
   const [showMenu, setShowMenu] = useState(false);
 
-  
-  // Создаем функцию для показа блока меню при наведении на ссылку
   const showMenuHandler = () => {
     setShowMenu(true);
   };
 
-  // Создаем функцию для скрытия блока меню при убирании мыши с блока
   const hideMenuHandler = () => {
     setShowMenu(false);
   };
@@ -40,7 +36,6 @@ export const Skate = () => {
       >
         Скейт
       </a>
-      {/* Добавляем условный рендеринг для блока меню в зависимости от состояния showMenu */}
       {showMenu && (
         <div
           // Добавляем обработчик события onMouseLeave для скрытия блока меню

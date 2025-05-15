@@ -91,21 +91,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); /* Более темный фон для лучшего контраста */
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Убедимся, что модальное окно поверх всех элементов */
+    z-index: 1000;
   }
   
   .modalContent {
     background: white;
     padding: 30px;
-    border-radius: 12px; /* Более мягкие углы */
-    width: 350px; /* Немного шире для удобства */
+    border-radius: 12px;
+    width: 350px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень для глубины */
-    animation: fadeIn 0.3s ease-in-out; /* Анимация появления */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
   }
   @keyframes fadeIn {
     from {
@@ -132,8 +132,6 @@
     margin-top: 20px;
   }
   
-  
-  /* Адаптивный дизайн */
   @media (max-width: 768px) {
     .userProfileContainer {
       padding: 10px;

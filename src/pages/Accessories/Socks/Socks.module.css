@@ -1,66 +1,61 @@
 .decksContainer:hover {
-    /* Добавляем нижнюю границу для ссылки */
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.parametersContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 2px solid #f3f3f3;
+}
+.countAndNavigation {
+  display: flex;
+  justify-content: space-between;
+}
+.numberAndNavigation {
+  width: 100%;
+}
+.cardCount {
+  padding: 20px;
+  color: rgb(147, 147, 147);
+}
+.sortContainer {
+}
+.lowToHigh {
+  width: 100px;
+  height: 80px;
+}
+.sortContainer {
+  width: 30%;
+}
+.sortContainer1 {
+  width: 30%;
+}
+.sortContainer2 {
+  width: 30%;
+}
+@media only screen and (max-width: 768px) {
+  .sortAndNavigation {
+    display: flex;
+  }
+  .numberAndNavigation {
+    display: flex;
+    gap: 60px;
+  }
+  .sortContainer {
+    padding: 20px;
   }
   .parametersContainer {
     display: flex;
-    gap: 20px;
-    padding: 20px;
+    width: 100%;
     border-bottom: 2px solid #f3f3f3;
   }
-  .countAndNavigation {
-    display: flex;
-    /* border-bottom: 2px solid #f3f3f3; */
-    justify-content: space-between;
-  }
-  .numberAndNavigation {
-    width: 100%;
-  }
   .cardCount {
-    padding: 20px;
-  
-    color: rgb(147, 147, 147);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: normal;
+    align-content: normal;
+    padding: 0;
+    padding-left: 20px;
   }
-  .sortContainer {
-  }
-  .lowToHigh {
-    width: 100px;
-    height: 80px;
-  }
-  .sortContainer {
-    width: 30%;
-  }
-  .sortContainer1 {
-    width: 30%;
-  }
-  .sortContainer2 {
-    width: 30%;
-  }
-  @media only screen and (max-width: 768px) {
-    .sortAndNavigation {
-      display: flex;
-    }
-    .numberAndNavigation {
-      display: flex;
-      gap: 60px;
-    }
-    .sortContainer {
-      padding: 20px;
-    }
-    .parametersContainer {
-      display: flex;
-      width: 100%;
-      border-bottom: 2px solid #f3f3f3;
-    }
-    .cardCount {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-  
-      align-items: normal;
-      align-content: normal;
-      padding: 0;
-      padding-left: 20px;
-    }
-  }
-  
+}

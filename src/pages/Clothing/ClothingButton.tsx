@@ -4,22 +4,16 @@ import { HoodiesButton } from "./Hoodies/HoodiesButton";
 import { JacketsButton } from "./Jackets/JacketsButton";
 import { SweatersButton } from "./Sweaters/SweatersButton";
 
-
-
 export const Clothing = () => {
-  // Создаем переменную состояния для хранения видимости блока меню
   const [showMenu, setShowMenu] = useState(false);
 
-  // Создаем функцию для показа блока меню при наведении на ссылку
   const showMenuHandler = () => {
     setShowMenu(true);
   };
 
-  // Создаем функцию для скрытия блока меню при убирании мыши с блока
   const hideMenuHandler = () => {
     setShowMenu(false);
   };
-
    // Предотвращаем переход по ссылке href={'#'}
    const linkClickHandler = (event:React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
@@ -38,7 +32,6 @@ export const Clothing = () => {
       >
         Одежда
       </a>
-      {/* Добавляем условный рендеринг для блока меню в зависимости от состояния showMenu */}
       {showMenu && (
         <div
           // Добавляем обработчик события onMouseLeave для скрытия блока меню
