@@ -11,7 +11,7 @@ type SizePropsType = {
 const SelectSizes: FC<SizePropsType> = ({ sizes }) => {
   const dispatch = useDispatch();
   const activeSizes = useSelector((state: RootState) => state.size.activeSizes) as string[];
-  const handleSizeChange = (event: SelectChangeEvent<string[]>, child: React.ReactNode) => {
+  const handleSizeChange = (event: SelectChangeEvent<string[]>) => {
     const {
       target: { value },
     } = event;

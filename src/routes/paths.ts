@@ -15,5 +15,4 @@ export const PATH = {
   CARD: "/card/:title/:newPrice/:img/:company/:color/:size",
   NEWS: "/news",
   NEWSPAGES1: "/NewsPage1",
-  
 };
