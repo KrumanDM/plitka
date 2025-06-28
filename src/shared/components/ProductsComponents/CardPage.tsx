@@ -3,23 +3,13 @@ import { useParams } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import s from "./CardPage.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../../store/cartSlice";
 import Button from "../Button/Button";
-
-// Define the Item type
-export interface Item {
-  title: string;
-  newPrice: string;
-  img: string;
-  company: string;
-  color: string;
-  size: string;
-  prevPrice: string;
-}
+import { Item } from "shared/config/types";
 
 // Define the props interface
-interface CardPageProps {
+type CardPageProps = {
   cartItems: Item[]; // Add cartItems to the props interface
 }
 
@@ -80,11 +70,13 @@ const CardPage: React.FC<CardPageProps> = ({ cartItems }) => {
       <Header />
       <div className={s.mainContainer}>
         <div className={s.imageContainer}>
+          <div className={s.image}>
           <img
             src={decodeURIComponent(img)}
             alt={title}
             onClick={() => handleOpenImg(decodeURIComponent(img))}
           />
+          </div>
         </div>
         <div className={s.descriptionContainer}>
           <h1>{title}</h1>

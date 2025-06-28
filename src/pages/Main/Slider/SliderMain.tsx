@@ -1,6 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
 import s from './Slider.module.css'
+import mainPhoto1 from '../../../assets/images/mainPhoto1.webp'
+import mainPhoto2 from '../../../assets/images/mainPhoto2.jpg'
+import mainPhoto3 from '../../../assets/images/mainPhoto3.jpeg'
 
 
 export const SliderMain = () =>{
@@ -17,13 +20,13 @@ export const SliderMain = () =>{
     <Slider {...settings}>
       <div style={{ marginRight: 0 }}>
       
-        <img src='https://place.tv/wp-content/uploads/2016/10/msm-wallpaper-027_1920x1200.jpg?x17105' alt='slide-1' />
+        <img src={mainPhoto1} alt='slide-1'/>
       </div>
       <div style={{ marginRight: 0 }}>
-        <img src='https://www.teahub.io/photos/full/217-2178040_thrasher-skateboarding-black-and-white.jpg' alt='slide-2' />
+        <img src={mainPhoto2} alt='slide-2'/>
       </div>
       <div style={{ marginRight: 0 }}>
-        <img src='https://images2.alphacoders.com/255/255812.jpg' alt='slide-3' />
+        <img src={mainPhoto3} alt='slide-3'/>
       </div>
     </Slider>
     <div className={s.hello}></div>

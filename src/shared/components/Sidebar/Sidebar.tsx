@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import s from "./Sidebar.module.css";
 import closeIcon from "./closeOutline.svg";
 import { SidebarAccessories } from "./SidebarAccessories/SidebarAccessories";

@@ -15,20 +15,7 @@ import useProducts from "./useProducts";
 import Products from "../ProductsComponents/Products/Products";
 import CardSearch from "../Search/CardSearch";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-
-interface Product {
-  img: string;
-  title: string;
-  star: string;
-  reviews: string;
-  prevPrice: string;
-  newPrice: string;
-  company: string;
-  color: string;
-  category: string;
-  size: string;
-  year: string;
-}
+import { Product } from "shared/config/types";
 
 export const Header = () => {
   const navigate = useNavigate();

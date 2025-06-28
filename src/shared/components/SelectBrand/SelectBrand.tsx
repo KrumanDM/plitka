@@ -8,7 +8,7 @@ type BrandsPropsType = {
   brands: string[];
 }
 
-const SelectBrand: FC<BrandsPropsType> = ({ brands }) => {
+const SelectBrand: FC<BrandsPropsType> = ({ brands}) => {
   const dispatch = useDispatch();
   const activeBrands = useSelector((state: RootState) => state.brand.activeBrands) as string[];
   const handleBrandChange = (event: SelectChangeEvent<string[]>) => {

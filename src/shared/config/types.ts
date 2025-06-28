@@ -12,6 +12,7 @@ export type Item = {
 export type CartState = {
   items: Item[];
 }
+
 export type Product = {
   category: string;
   color: string;
@@ -25,6 +26,7 @@ export type Product = {
   size: string;
   year: string;
 };
+
 export type FiltrationType = {
   category: string;
   color: string;

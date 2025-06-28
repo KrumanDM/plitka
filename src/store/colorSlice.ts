@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ColorState {
+type ColorState = {
   color: string;
 }
 

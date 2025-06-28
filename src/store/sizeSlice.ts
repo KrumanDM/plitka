@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface SizeState {
+type SizeState = {
   activeSizes: string[];
 }
 

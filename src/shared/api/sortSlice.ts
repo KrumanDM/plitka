@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface Product {
+type Product = {
   title: string;
   newPrice: string;
   year: string;

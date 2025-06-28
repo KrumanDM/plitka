@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '../shared/config/types';
 
-export interface OrderData {
+export type OrderData = {
   items: Item[];
   totalPrice: number;
   userEmail: string | null;
@@ -9,27 +9,27 @@ export interface OrderData {
   phone: string;
 }
 
-interface CartState {
-  items: CartItem[]; // Используем CartItem вместо Item
+type CartState = {
+  items: CartItem[]; 
   quantities: Record<string, number>;
   totalPrice: number;
 }
 
 export type ItemCard = {
-  title: string;        // Название товара
-  newPrice: string;     // Цена товара в виде строки
-  description?: string; // Необязательное описание товара
-  imageUrl?: string;    // Необязательный URL изображения товара
-  img: string;          // Обязательное свойство
-  prevPrice: string;    // Обязательное свойство
-  company: string;      // Обязательное свойство
-  color: string;        // Обязательное свойство
-  size: string;         // Обязательное свойство
+  title: string;     
+  newPrice: string;     
+  description?: string;
+  imageUrl?: string;    
+  img: string;         
+  prevPrice: string;    
+  company: string;      
+  color: string;        
+  size: string;         
 };
 
 interface CartItem extends Item {
-  totalPrice: number; // Добавляем свойство totalPrice
-  quantity: number;   // Добавляем свойство quantity
+  totalPrice: number; 
+  quantity: number;   
 }
 
 const initialState: CartState = {
