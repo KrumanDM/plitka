@@ -1,4 +1,3 @@
-// types.ts
 export type Item = {
   img: string;
   title: string;

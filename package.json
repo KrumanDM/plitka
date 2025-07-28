@@ -2,7 +2,7 @@
   "name": "my-app",
   "homepage": "https://KrumanDM.github.io/plitka",
   "version": "0.1.0",
-  "type": "commonjs",
+  "type": "module",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -28,6 +28,7 @@
     "framer-motion": "^10.16.5",
     "fuse.js": "^7.1.0",
     "gh-pages": "^6.1.0",
+    "helmet": "^8.1.0",
     "history": "^5.3.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.7.1",
@@ -48,17 +49,15 @@
     "source-map-loader": "^5.0.0",
     "ts-node": "^10.9.2",
     "uuid": "^11.0.5",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "xss-shield": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
-    "dev": "node --experimental-specifier-resolution=node --loader ts-node/esm ./src/index.tsx",
-    "server": "ts-node -T server.ts"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "server": "tsx server.ts",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
@@ -79,17 +78,21 @@
     ]
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.13.5",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^22.15.3",
     "@types/react-slick": "^0.23.13",
     "@types/redux-logger": "^3.0.13",
+    "@vitejs/plugin-react": "^4.7.0",
     "immer": "^10.0.4",
     "node-polyfill-webpack-plugin": "^3.0.0",
     "nodemon": "^3.1.0",
-    "react-scripts": "^5.0.1",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.6",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.tsx",
