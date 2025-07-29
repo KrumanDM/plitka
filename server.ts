@@ -8,13 +8,10 @@ import orderRoutes from './routes/orderRoutes';
 import productRoutes from './routes/productRoutes';
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 
 // 🧠 Безопасность
 app.use(helmet()); // стандартные security-заголовки
-
-app.use(cors()); // настрой CORS по необходимости, лучше не оставлять по умолчанию
-
 // 🔒 CSP защита
 app.use(
   helmet.contentSecurityPolicy({
@@ -26,6 +23,15 @@ app.use(
     },
   })
 );
+// 🎯 Настройка CORS-политики
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://krumandm.github.io'], // Разрешённые домены
+  methods: ['GET', 'POST', 'DELETE'], // Разрешённые методы
+  allowedHeaders: ['Content-Type', 'Authorization'], // Разрешённые заголовки
+  credentials: true, // Разрешить cookie, если нужно
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
