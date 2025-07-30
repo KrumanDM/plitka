@@ -1,39 +1,19 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
-import helmet from 'helmet';
-import xssShieldModule from 'xss-shield';
 import userRoutes from './routes/userRoutes';
 import orderRoutes from './routes/orderRoutes';
 import productRoutes from './routes/productRoutes';
+import { applySecurityMiddleware } from './securityMiddleware';
+import { corsMiddleware } from './corsMiddleware';
 
 const app = express();
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 
-// 🧠 Безопасность
-app.use(helmet()); // стандартные security-заголовки
-// 🔒 CSP защита
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
-// 🎯 Настройка CORS-политики
-const corsOptions = {
-  origin: ['http://localhost:3000', 'https://krumandm.github.io'], // Разрешённые домены
-  methods: ['GET', 'POST', 'DELETE'], // Разрешённые методы
-  allowedHeaders: ['Content-Type', 'Authorization'], // Разрешённые заголовки
-  credentials: true, // Разрешить cookie, если нужно
-};
-
-app.use(cors(corsOptions));
+app.use(corsMiddleware);
 
 app.use(express.json());
+
+applySecurityMiddleware(app);
 
 // 📡 Подключение к БД
 mongoose
