@@ -4,7 +4,7 @@ import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import s from "./CardPage.module.css";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../../store/cartSlice";
+import { addToCart } from "store/cartSlice";
 import Button from "../Button/Button";
 import { Item } from "shared/config/types";
 

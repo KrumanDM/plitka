@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { HoodiesButton } from "../../../../pages/Clothing/Hoodies/HoodiesButton";
-import { JacketsButton } from "../../../../pages/Clothing/Jackets/JacketsButton";
-import { SweatersButton } from "../../../../pages/Clothing/Sweaters/SweatersButton";
+import { HoodiesButton } from "pages/Clothing/Hoodies/HoodiesButton";
+import { JacketsButton } from "pages/Clothing/Jackets/JacketsButton";
+import { SweatersButton } from "pages/Clothing/Sweaters/SweatersButton";
 import s from "./SidebarClothing.module.css";
 
 type SidebarProps = {

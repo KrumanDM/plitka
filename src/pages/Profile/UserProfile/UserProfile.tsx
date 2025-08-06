@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Footer } from "../../../shared/components/Footer/Footer";
-import { AppDispatch, RootState } from "../../../store/store";
-import { Header } from "../../../shared/components/Header/Header";
+import { Footer } from "shared/components/Footer/Footer";
+import { AppDispatch, RootState } from "store/store";
+import { Header } from "shared/components/Header/Header";
 import { deleteOrder, getOrders } from "./orderSlice";
 import s from "./UserProfile.module.css";
-import Button from "../../../shared/components/Button/Button";
+import Button from "shared/components/Button/Button";
 import { Alert, Snackbar } from "@mui/material";
 
 type OrderItem = {

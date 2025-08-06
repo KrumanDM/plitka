@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../../shared/components/Button/Button';
+import Button from 'shared/components/Button/Button';
 import s from './OrderSuccessModal.module.css';
 
 interface OrderSuccessModalProps {

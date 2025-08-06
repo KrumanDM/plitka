@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { Item } from '../shared/config/types';
+import { Item } from 'shared/config/types';
 
 export type OrderData = {
   items: Item[];

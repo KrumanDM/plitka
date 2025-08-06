@@ -1,4 +1,4 @@
- import "../../../Header/Skate/Decks/DecksStorage/Recommended/Recommended"
+ import "components/Header/Skate/Decks/DecksStorage/Recommended/Recommended"
  import react, { FC } from "react";
  import s from "./Button.module.css"
 

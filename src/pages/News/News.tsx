@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Header } from "../../shared/components/Header/Header";
+import { Header } from "shared/components/Header/Header";
 import s from "./News.module.css";
-import jante_633 from "../../assets/images/news/Jante_633.webp"
-import Austyn_Gillette from "../../assets/images/news/Austyn_Gillette.webp"
-import Rassvet_Blue from "../../assets/images/news/Rassvet_Blue.webp"
+import jante_633 from "assets/images/news/Jante_633.webp"
+import Austyn_Gillette from "assets/images/news/Austyn_Gillette.webp"
+import Rassvet_Blue from "assets/images/news/Rassvet_Blue.webp"
 import { Footer } from "shared/components/Footer/Footer";
 
 const News = () => {

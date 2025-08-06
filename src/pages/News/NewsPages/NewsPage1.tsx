@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Header } from "../../../shared/components/Header/Header";
+import { Header } from "shared/components/Header/Header";
 import s from "./NewsPage.module.css";
 
 const NewsPage1 = () => {

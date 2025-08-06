@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent, Checkbox, ListItemText } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from "../../../store/store";
+import { RootState } from "store/store";
 import { setActiveBrands } from './brandSlice';
 
 type BrandsPropsType = {

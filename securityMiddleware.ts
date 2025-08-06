@@ -1,5 +1,4 @@
 import helmet from 'helmet';
-import xssClean from 'xss-clean';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
 import mongoSanitize from 'express-mongo-sanitize';
@@ -21,10 +20,10 @@ export const applySecurityMiddleware = (app: Express) => {
     })
   );
 
-  // 🧽 Защита от NoSQL-инъекций
+  // Защита от NoSQL-инъекций
   app.use(mongoSanitize()); //чистит вредоносные Mongo-операторы
 
-  // 🧱 Защита от HTTP Parameter Pollution
+  // Защита от HTTP Parameter Pollution
   app.use(hpp());//убирает вредные повторяющиеся параметры
 
   // 🚦 Ограничение количества запросов

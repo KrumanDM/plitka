@@ -1,25 +1,26 @@
 import React from "react";
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { RootState } from "store/store";
 import s from "./App.module.css";
-import { PATH } from "../routes/paths";
-import Site from "../pages/Site/Site";
-import Jackets from "../pages/Clothing/Jackets/Jackets";
-import Hoodies from "../pages/Clothing/Hoodies/Hoodies";
-import Socks from "../pages/Accessories/Socks/Socks";
-import Hats from "../pages/Accessories/Hats/Hats";
-import Bags from "../pages/Accessories/Bags/Bags";
-import Trucks from "../pages/Skate/Trucks/Trucks";
-import Profile from "../pages/Profile/Profile";
-import Busket from "../pages/Busket/Busket";
-import Sweaters from "../pages/Clothing/Sweaters/Sweaters";
-import Decks from "../pages/Skate/Decks/Decks";
-import CardPage from "../shared/components/ProductsComponents/CardPage";
-import Complites from "../pages/Skate/Complites/Complites";
-import UserProfile from "../pages/Profile/UserProfile/UserProfile";
-import News from "../pages/News/News";
-import NewsPage1 from "../pages/News/NewsPages/NewsPage1";
+import { PATH } from "routes/paths";
+import Site from "pages/Site/Site";
+import Jackets from "pages/Clothing/Jackets/Jackets";
+import Hoodies from "pages/Clothing/Hoodies/Hoodies";
+import Socks from "pages/Accessories/Socks/Socks";
+import Hats from "pages/Accessories/Hats/Hats";
+import Bags from "pages/Accessories/Bags/Bags";
+import Trucks from "pages/Skate/Trucks/Trucks";
+import Profile from "pages/Profile/Profile";
+import Busket from "pages/Busket/Busket";
+import Sweaters from "pages/Clothing/Sweaters/Sweaters";
+import Decks from "pages/Skate/Decks/Decks";
+import CardPage from "shared/components/ProductsComponents/CardPage";
+import Complites from "pages/Skate/Complites/Complites";
+import UserProfile from "pages/Profile/UserProfile/UserProfile";
+import News from "pages/News/News";
+import NewsPage1 from "pages/News/NewsPages/NewsPage1";
+
 
 
 const App: React.FC = () => {

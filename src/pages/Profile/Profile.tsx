@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Header } from "../../shared/components/Header/Header";
+import { Header } from "shared/components/Header/Header";
 import s from "./Profile.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, Navigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import {
   checkUser ,
   toggleLogin,
 } from "./authSlice";
-import { AppDispatch } from "../../store/store";
+import { AppDispatch } from "store/store";
 
 type AuthStateType = {
     isLogin: boolean;

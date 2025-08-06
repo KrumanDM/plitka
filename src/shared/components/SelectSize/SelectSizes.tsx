@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent, Checkbox, ListItemText } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveSizes } from "../../../store/sizeSlice";
-import { RootState } from "../../../store/store";
+import { setActiveSizes } from "store/sizeSlice";
+import { RootState } from "store/store";
 
 type SizePropsType = {
   sizes: string[];

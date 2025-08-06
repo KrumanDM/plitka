@@ -1,9 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
 import s from './Slider.module.css'
-import mainPhoto1 from '../../../assets/images/mainPhoto1.webp'
-import mainPhoto2 from '../../../assets/images/mainPhoto2.jpg'
-import mainPhoto3 from '../../../assets/images/mainPhoto3.jpeg'
+import mainPhoto1 from 'assets/images/mainPhoto1.webp'
+import mainPhoto2 from 'assets/images/mainPhoto2.jpg'
+import mainPhoto3 from 'assets/images/mainPhoto3.jpeg'
 
 
 export const SliderMain = () =>{

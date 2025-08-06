@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Sidebar } from "../Sidebar/Sidebar";
-import { Clothing } from "../../../pages/Clothing/ClothingButton";
-import { Accessories } from "../../../pages/Accessories/AccessoriesButton";
-import { Skate } from "../../../pages/Skate/SkateButton";
+import { Clothing } from "pages/Clothing/ClothingButton";
+import { Accessories } from "pages/Accessories/AccessoriesButton";
+import { Skate } from "pages/Skate/SkateButton";
 import s from "./Header.module.css";
 import SearchForm from "../Search/SearchForm";
 import SearchIcon from "@mui/icons-material/Search";

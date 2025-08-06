@@ -1,17 +1,17 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import s from "./Decks.module.css";
-import Navigation from "../../../shared/components/ProductsComponents/Nav";
-import Products from "../../../shared/components/ProductsComponents/Products/Products";
-import Card from "../../../shared/components/ProductsComponents/Card";
-import { Header } from "../../../shared/components/Header/Header";
+import Navigation from 'shared/components/ProductsComponents/Nav';
+import Products from "shared/components/ProductsComponents/Products/Products";
+import Card from "shared/components/ProductsComponents/Card";
+import { Header } from "shared/components/Header/Header";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store/store";
-import { useAppDispatch } from "../../../shared/config/hooks";
+import { RootState } from "store/store";
+import { useAppDispatch } from "shared/config/hooks";
 import {
   setSortLabel,
   sortByNewest,
@@ -19,12 +19,12 @@ import {
   sortByPriceLowToHigh,
   sortByTitleAZ,
   sortByTitleZA,
-} from "../../../shared/api/sortSlice";
-import { Footer } from "../../../shared/components/Footer/Footer";
-import { FiltrationType } from "../../../shared/config/types";
-import SelectColors from "../../../shared/components/SelectColors/SelectColors";
-import SelectSizes from "../../../shared/components/SelectSize/SelectSizes";
-import SelectBrand from "../../../shared/components/SelectBrand/SelectBrand";
+} from "shared/api/sortSlice";
+import { Footer } from "shared/components/Footer/Footer";
+import { FiltrationType } from "shared/config/types";
+import SelectColors from "shared/components/SelectColors/SelectColors";
+import SelectSizes from "shared/components/SelectSize/SelectSizes";
+import SelectBrand from "shared/components/SelectBrand/SelectBrand";
 import { useDecksData } from "pages/Skate/Decks/useDecks";
 import { useMediaQuery } from "react-responsive";
 
