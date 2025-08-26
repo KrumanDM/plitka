@@ -28,15 +28,6 @@ const CardPage: React.FC<CardPageProps> = ({ cartItems }) => {
     setOpenedImg(null);
     setZoomLevel(1);
   };
-
-  const handleZoomIn = () => {
-    setZoomLevel(zoomLevel + 0.1);
-  };
-
-  const handleZoomOut = () => {
-    setZoomLevel(zoomLevel - 0.1);
-  };
-
   const { title, newPrice, img, company, color, size, prevPrice } = useParams<{
     title: string;
     newPrice: string;
