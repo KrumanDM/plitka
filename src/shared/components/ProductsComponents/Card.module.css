@@ -10,10 +10,14 @@
 .card:hover{
   box-shadow: 0 4px 24px hsla(230, 75%, 40%, 0.4);
 }
-.card-img {
-  width: 13rem;
-  margin-bottom: 1rem;
+.cardImg {
+  width: 13rem;       /* или 100% если ширина гибкая */
+  height: 200px;      /* фиксированная высота для всех */
+  object-fit: cover;  /* обрезает лишнее, но сохраняет пропорции */
+  display: block;
 }
+
+
 
 .card-title {
   margin-bottom: 1rem;
