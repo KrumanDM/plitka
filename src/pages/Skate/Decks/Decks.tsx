@@ -103,7 +103,6 @@ function Decks() {
                 </div>
                 <SelectColors
                   colors={uniqueColors}
-                  handleChange={handleColorChange}
                 />
                 <div className={s.sizeContainer}>
                   <SelectBrand brands={uniqueBrands} />
@@ -151,7 +150,7 @@ function Decks() {
               <div className={s.sizeContainer}>
                 <SelectSizes sizes={uniqueSizes} />
               </div>
-              <SelectColors colors={uniqueColors} handleChange={handleColorChange} />
+              <SelectColors colors={uniqueColors} />
               <div className={s.sizeContainer}>
                 <SelectBrand brands={uniqueBrands} />
               </div>

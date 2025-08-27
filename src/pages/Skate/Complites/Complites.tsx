@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import s from "./Complites.module.css";
 import Navigation from "shared/components/ProductsComponents/Nav"
 import { Header } from "shared/components/Header/Header";
@@ -29,121 +29,69 @@ import { FiltrationType } from "shared/config/types";
 import { useComplitesData } from "pages/Skate/Complites/useComplites";
 
 function Complites() {
-  const { data: complites, isLoading, isError, error } = useComplitesData();
+  const { data: complites } = useComplitesData();
   const dispatch = useAppDispatch();
-  const sortedProducts = useSelector(
-    (state: RootState) => state.sort.sortedProducts
-  );
+  const sortedProducts = useSelector((state: RootState) => state.sort.sortedProducts);
 
-  useEffect(() => {
-    setProducts(complites || []);
-  }, [complites]);
-
-  useEffect(() => {
-    setProducts(sortedProducts as FiltrationType[]);
-  }, [sortedProducts]);
-
-
-  const handleSelectChange = (event: SelectChangeEvent<string>) => {
-    const value = event.target.value;
-    dispatch(setSortLabel(value));
-
-    if (value === "По убыванию цены") {
-      dispatch(sortByPriceHighToLow(complites));
-    } else if (value === "По возрастанию цены") {
-      dispatch(sortByPriceLowToHigh(complites));
-    } else if (value === "От A до Z") {
-      dispatch(sortByTitleAZ(complites));
-    } else if (value === "От Z до A") {
-      dispatch(sortByTitleZA(complites));
-    } else if (value === "По новинкам") {
-      dispatch(sortByNewest(complites));
-    }
-  };
-
-  // Инициализация состояния
   const [products, setProducts] = useState<FiltrationType[]>([]);
-
-  useEffect(() => {
-    if (complites) {
-      setProducts(complites);
-    }
-  }, [complites]);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [query, setQuery] = useState("");
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const activeSizes = useSelector((state: RootState) => state.size.activeSizes);
-  const activeBrands = useSelector(
-    (state: RootState) => state.brand.activeBrands
-  );
+  const activeBrands = useSelector((state: RootState) => state.brand.activeBrands);
   const label = useSelector((state: RootState) => state.sort.label);
-  const [selectedColor, setSelectedColor] = useState("");
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const [query, setQuery] = useState("");
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-  };
+  useEffect(() => {
+    if (complites) setProducts(complites);
+  }, [complites]);
 
-  const handleColorChange = (
-    event: SelectChangeEvent<string>
-  ) => {
-    const color = event.target.value;
-    setSelectedColor(color);
-  };
+  useEffect(() => {
+    if (sortedProducts.length) setProducts(sortedProducts as FiltrationType[]);
+  }, [sortedProducts]);
 
-  // Создаются уникальные неповторяющиеся цвета с помощью new Set
-  const uniqueColors = Array.from(
-    new Set(complites?.map((product: FiltrationType) => product.color) || [])
-  ).sort();
-  
-  const uniqueSizes = Array.from(
-    new Set(complites?.map((product: FiltrationType) => product.size) || [])
-  ).sort();
-  
-  const uniqueBrands = Array.from(
-    new Set(complites?.map((product: FiltrationType) => product.company) || [])
-  ).sort();
+  const handleSelectChange = useCallback((event: SelectChangeEvent<string>) => {
+    const value = event.target.value;
+    dispatch(setSortLabel(value));
+    
+    
+    switch (value) {
+      case "По убыванию цены": dispatch(sortByPriceHighToLow(complites)); break;
+      case "По возрастанию цены": dispatch(sortByPriceLowToHigh(complites)); break;
+      case "От A до Z": dispatch(sortByTitleAZ(complites)); break;
+      case "От Z до A": dispatch(sortByTitleZA(complites)); break;
+      case "По новинкам": dispatch(sortByNewest(complites)); break;
+    }
+  }, [dispatch, complites]);
 
-  function filteredData(
-    products: FiltrationType[],
-    query: string,
-    selectedColor: string
-  ): FiltrationType[] {
-    return products.filter((product) => {
-      if (query && !product.title.toLowerCase().includes(query.toLowerCase())) {
-        return false;
-      }
-      if (selectedColor && product.color !== selectedColor) {
-        return false;
-      }
-      if (activeSizes.length > 0 && !activeSizes.includes(product.size)) {
-        return false;
-      }
-      if (activeBrands.length > 0 && !activeBrands.includes(product.company)) {
-        return false;
-      }
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value), []);
+
+  const uniqueColors = useMemo(() => Array.from(new Set(complites?.map(p => p.color) || [])).sort(), [complites]);
+  const uniqueSizes = useMemo(() => Array.from(new Set(complites?.map(p => p.size) || [])).sort(), [complites]);
+  const uniqueBrands = useMemo(() => Array.from(new Set(complites?.map(p => p.company) || [])).sort(), [complites]);
+
+  const filteredProducts = useMemo(() =>
+    products.filter(p => {
+      if (query && !p.title.toLowerCase().includes(query.toLowerCase())) return false;
+      if (selectedColor && p.color !== selectedColor) return false;
+      if (activeSizes.length > 0 && !activeSizes.includes(p.size)) return false;
+      if (activeBrands.length > 0 && !activeBrands.includes(p.company)) return false;
       return true;
-    });
-  }
-  // Отдельная функция для рендеринга карточек
-  function renderCards(filteredProducts: FiltrationType[]) {
-    return filteredProducts.map(({ img, title, prevPrice, newPrice, size, company, color }) => (
-      <Card
-        key={`${title}-${newPrice}-${img}`}
-        img={img}
-        title={title}
-        prevPrice={prevPrice}
-        newPrice={newPrice}
-        size={size}
-        company={company}
-        color={color}
-      />
-    ));
-  }
-  
-  const filteredProducts = filteredData(products, query, selectedColor);
-  const result = renderCards(filteredProducts);
-  const cardCount = result.length;
+    }),
+    [products, query, selectedColor, activeSizes, activeBrands]
+  );
 
+  const result = useMemo(() =>
+    filteredProducts.map(p => (
+      <Card key={`${p.title}-${p.newPrice}-${p.img}-${p.size}`} {...p} />
+    )),
+    [filteredProducts]
+  );
+
+  const cardCount = result.length;
+ 
+      
+      
   return (
     <>
       <Header />
@@ -155,7 +103,7 @@ function Complites() {
                 <div className={s.sizeContainer}>
                   <SelectSizes sizes={uniqueSizes} />
                 </div>
-                <SelectColors colors={uniqueColors} handleChange={handleColorChange} />
+                <SelectColors colors={uniqueColors} />
                 <div className={s.sizeContainer}>
                   <SelectBrand brands={uniqueBrands}/>
                 </div>
@@ -167,6 +115,7 @@ function Complites() {
                       <InputLabel id="demo-simple-select-label">
                         Сортировка
                       </InputLabel>
+                      
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -202,7 +151,7 @@ function Complites() {
               <div className={s.sizeContainer}>
                 <SelectSizes sizes={uniqueSizes} />
               </div>
-              <SelectColors colors={uniqueColors} handleChange={handleColorChange} />
+              <SelectColors colors={uniqueColors} />
               <div className={s.sizeContainer}>
                 <SelectBrand brands={uniqueBrands}/>
               </div>
