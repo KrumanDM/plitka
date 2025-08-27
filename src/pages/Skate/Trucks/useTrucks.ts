@@ -11,7 +11,7 @@ const fetchTrucksData = async (): Promise<Product[]> => {
   return response.json();
 };
 
-// Custom hook for data fetching
+// Custom hook for data fetching 
 export const useTrucksData = () => {
   return useQuery(['trucks'], fetchTrucksData, {
     staleTime: 5 * 60 * 1000, // Cache data for 5 minutes

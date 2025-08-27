@@ -11,7 +11,7 @@ const fetchComplitesData = async (): Promise<Product[]> => {
   return response.json();
 };
 
-// Custom hook for data fetching
+// Custom hook for data fetching 
 export const useComplitesData = () => {
   return useQuery(['complites'], fetchComplitesData, {
     staleTime: 5 * 60 * 1000, // Cache data for 5 minutes
