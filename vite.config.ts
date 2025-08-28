@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -5,13 +6,15 @@ import path from 'path';
 
 export default defineConfig({
   base: '/plitka',
-  plugins: [react({
-    jsxImportSource: '@emotion/react',
-    babel: {
-      plugins: ['@emotion/babel-plugin']
-    }
-  })
-  , tsconfigPaths()],
+  plugins: [
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
+    tsconfigPaths(),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
@@ -21,14 +24,19 @@ export default defineConfig({
       '@routes': path.resolve(__dirname, 'src/routes'),
       '@shared': path.resolve(__dirname, 'src/shared'),
       '@store': path.resolve(__dirname, 'src/store'),
-      // добавь другие алиасы по необходимости
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    css: true,
   },
   server: {
     port: 3000,
-    open: true
+    open: true,
   },
   build: {
-    outDir: 'build'
-  }
+    outDir: 'build',
+  },
 });

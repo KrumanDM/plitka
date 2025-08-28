@@ -34,12 +34,12 @@ function Decks() {
   const sortedProducts = useSelector((state: RootState) => state.sort.sortedProducts);
 
   const [products, setProducts] = useState<FiltrationType[]>([]);
-  const [selectedColor, setSelectedColor] = useState("");
   const [query, setQuery] = useState("");
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const activeSizes = useSelector((state: RootState) => state.size.activeSizes);
   const activeBrands = useSelector((state: RootState) => state.brand.activeBrands);
+  const selectedColor = useSelector((state: RootState) => state.color.color);
   const label = useSelector((state: RootState) => state.sort.label);
 
   useEffect(() => {
@@ -64,7 +64,6 @@ function Decks() {
   }, [dispatch, decks]);
 
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value), []);
-  const handleColorChange = useCallback((e: SelectChangeEvent<string>) => setSelectedColor(e.target.value), []);
 
   const uniqueColors = useMemo(() => Array.from(new Set(decks?.map(p => p.color) || [])).sort(), [decks]);
   const uniqueSizes = useMemo(() => Array.from(new Set(decks?.map(p => p.size) || [])).sort(), [decks]);
