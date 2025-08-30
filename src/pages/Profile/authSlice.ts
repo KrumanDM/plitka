@@ -1,13 +1,13 @@
-// features/authSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-interface AuthState {
+export interface AuthState {
   isRegistered: boolean;
   isLogin: boolean;
   redirectToProfile: boolean;
   loginErrorMessage: string | null;
   registrationErrorMessage: string | null;
   successMessage: string;
+  user: { id: string; email: string } | null;
 }
 
 const initialState: AuthState = {
@@ -17,18 +17,17 @@ const initialState: AuthState = {
   loginErrorMessage: null,
   registrationErrorMessage: null,
   successMessage: '',
+  user: null,
 };
 
-// Async thunk для регистрации
-export const registerUser  = createAsyncThunk(
-  'auth/registerUser ',
+// Регистрация
+export const registerUser = createAsyncThunk(
+  'auth/registerUser',
   async (values: { email: string; password: string }, { rejectWithValue }) => {
     const response = await fetch('http://localhost:5001/api/users/register', {
       method: 'POST',
       body: JSON.stringify(values),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (!response.ok) {
@@ -37,32 +36,49 @@ export const registerUser  = createAsyncThunk(
     }
 
     const data = await response.json();
-    localStorage.setItem('userEmail', data.user.email);
-    return data; // Возвращаем данные, включая сообщение
+    localStorage.setItem('token', data.token);
+    return data;
   }
 );
 
-// Async thunk для авторизации
-export const loginUser  = createAsyncThunk(
-  'auth/loginUser ',
+// Логин
+export const loginUser = createAsyncThunk(
+  'auth/loginUser',
   async (values: { email: string; password: string }, { rejectWithValue }) => {
     const response = await fetch('http://localhost:5001/api/users/login', {
       method: 'POST',
       body: JSON.stringify(values),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      return rejectWithValue(errorData.message); // Return error message
+      return rejectWithValue(errorData.message);
     }
 
     const data = await response.json();
-    localStorage.setItem('userEmail', data.email);
-    localStorage.setItem('userId', data.id);
-    return data; // Return user data on successful login
+    localStorage.setItem('token', data.token);
+    return data;
+  }
+);
+
+// Проверка токена
+export const checkUser = createAsyncThunk(
+  'auth/checkUser',
+  async (_, { rejectWithValue }) => {
+    const token = localStorage.getItem('token');
+    if (!token) return rejectWithValue('No token');
+
+    const response = await fetch('http://localhost:5001/api/users/me', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!response.ok) {
+      localStorage.removeItem('token');
+      return rejectWithValue('Invalid token');
+    }
+
+    return await response.json();
   }
 );
 
@@ -74,42 +90,46 @@ const authSlice = createSlice({
       state.loginErrorMessage = null;
       state.registrationErrorMessage = null;
     },
-    checkUser (state) {
-      const userEmail = localStorage.getItem('userEmail');
-      if (userEmail) {
-        state.isRegistered = true;
-        state.isLogin = true;
-        state.redirectToProfile = true;
-      }
-    },
-    toggleLogin(state) {
-      state.isLogin = !state.isLogin;
-      state.loginErrorMessage = null; 
-      state.registrationErrorMessage = null;
+    logout(state) {
+      localStorage.removeItem('token');
+      state.isLogin = false;
+      state.user = null;
+      state.redirectToProfile = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registerUser .fulfilled, (state, action) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.isRegistered = true;
-        state.isLogin = true; // Установите isLogin в true
-        state.registrationErrorMessage = null; // Сброс сообщения об ошибке регистрации
-        state.successMessage = action.payload.message; // Сохранение сообщения
+        state.isLogin = true;
+        state.registrationErrorMessage = null;
+        state.successMessage = 'Регистрация успешна';
+        state.user = action.payload.user;
       })
-      .addCase(registerUser .rejected, (state, action) => {
-        state.registrationErrorMessage = action.payload as string; // Сохранение сообщения об ошибке регистрации
-        state.successMessage = ''; // Сброс сообщения об успехе
+      .addCase(registerUser.rejected, (state, action) => {
+        state.registrationErrorMessage = action.payload as string;
+        state.successMessage = '';
       })
-      .addCase(loginUser .fulfilled, (state, action) => {
-        state.isLogin = true; // Установите isLogin в true
-        state.loginErrorMessage = null; // Сброс сообщения об ошибке входа
-        state.successMessage = ''; // Сброс сообщения об успехе
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLogin = true;
+        state.loginErrorMessage = null;
+        state.successMessage = '';
+        state.user = action.payload.user;
       })
-      .addCase(loginUser .rejected, (state, action) => {
-        state.loginErrorMessage = action.payload as string; // Установите сообщение об ошибке входа
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loginErrorMessage = action.payload as string;
+      })
+      .addCase(checkUser.fulfilled, (state, action) => {
+        state.isLogin = true;
+        state.user = action.payload;
+        state.redirectToProfile = true;
+      })
+      .addCase(checkUser.rejected, (state) => {
+        state.isLogin = false;
+        state.user = null;
       });
   },
 });
 
-export const { resetError, checkUser , toggleLogin } = authSlice.actions;
+export const { resetError, logout } = authSlice.actions;
 export default authSlice.reducer;

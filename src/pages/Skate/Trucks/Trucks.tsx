@@ -10,7 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import SelectColors from "shared/components/SelectColors/SelectColors";
 import { useSelector } from "react-redux";
-import { RootState } from "store/store";
+import { RootState } from "store/store.types";
 import { useAppDispatch } from "shared/config/hooks";
 import {
   setSortLabel,

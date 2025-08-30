@@ -1,11 +1,16 @@
 import express from 'express';
-import { createOrder, getOrdersByEmail, deleteOrderById } from '../controllers/orderController';
-
+import { createOrder, getMyOrders, deleteOrderById } from '../controllers/orderController';
+import { verifyToken } from '../middlewares/verifyToken';
 
 const router = express.Router();
 
-router.post('/', createOrder);
-router.get('/:email', getOrdersByEmail);
-router.delete('/:orderId', deleteOrderById);
+// Создать заказ (только авторизованный пользователь)
+router.post('/', verifyToken, createOrder);
+
+// Получить заказы текущего пользователя
+router.get('/', verifyToken, getMyOrders);
+
+// Удалить заказ (только свой)
+router.delete('/:orderId', verifyToken, deleteOrderById);
 
 export default router;
