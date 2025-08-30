@@ -1,27 +1,34 @@
-import { Middleware, AnyAction } from '@reduxjs/toolkit';
-import { checkUser      } from './authSlice';
+import { checkUser } from './authSlice';
+import type { AppMiddleware, AppDispatch, RootState } from 'store/store.types';
 
 let checkUserCalled = false;
+import type { Action } from '@reduxjs/toolkit';
 
-const authMiddleware: Middleware = (store) => (next) => (action: any) => {
-  const token = localStorage.getItem('userEmail');
+function isReduxAction(action: unknown): action is Action {
+  return typeof action === 'object' && action !== null && 'type' in action;
+}
+
+const authMiddleware: AppMiddleware = (store) => (next) => (action) => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
   const state = store.getState();
 
-  if (token && !state.auth.isLogin && action.type !== 'auth/checkUser' && !checkUserCalled) {
-    checkUserCalled = true; // Prevent multiple dispatches
-    store.dispatch(checkUser());
+  if (isReduxAction(action)) {
+    if (action.type === 'auth/logout') {
+      checkUserCalled = false;
+    }
+
+    if (
+      token &&
+      !state.auth.isLogin &&
+      action.type !== 'auth/checkUser' &&
+      !checkUserCalled
+    ) {
+      checkUserCalled = true;
+      store.dispatch(checkUser());
+    }
   }
 
   return next(action);
 };
+
 export default authMiddleware;
-
-//Предотвращение бесконечной отправки: чтобы избежать рекурсивной отправки действий 
-//(которая привела к ошибке «Превышен максимальный размер стека вызовов»), вводится флаг (checkUserCalled), 
-//гарантирующий, что checkUser будет отправлен только один раз в течение жизненного цикла приложения, 
-//пока не изменятся условия.
-
-//Проверка аутентификации пользователя: промежуточное ПО проверяет, существует ли токен 
-//(адрес электронной почты пользователя в локальном хранилище) и вошел ли пользователь в систему 
-//(isLogin имеет значение false). Если пользователь не вошел в систему и действие checkUser не было запущено 
-//(action.type !== 'auth/checkUser'), он отправляет действие checkUser для проверки сеанса пользователя.

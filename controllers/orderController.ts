@@ -1,38 +1,63 @@
+import { Response } from 'express';
 import { Order } from '../models/orderModel';
-import { Request, Response } from 'express';
+import { AuthRequest } from '../middlewares/verifyToken';
+import mongoose from 'mongoose';
 
-export const createOrder = async (req: Request, res: Response) => {
+// Создание заказа
+export const createOrder = async (req: AuthRequest, res: Response) => {
   try {
-    const { items, totalPrice, userEmail, name, phone } = req.body;
-    const newOrder = new Order({ items, totalPrice, userEmail, name, phone });
-    await newOrder.save();
-    res.status(201).send({ message: 'Заказ успешно оформлен' });
+    const { items, totalPrice, name, phone } = req.body;
+
+    const order = new Order({
+      user: req.user!.id,              // из токена
+      userEmail: req.user!.email,      // из токена
+      items,
+      totalPrice,
+      name,
+      phone,
+    });
+
+    await order.save();
+    res.status(201).json(order);
   } catch (error) {
-    res.status(500).send({ message: 'Ошибка при оформлении заказа' });
+    res.status(500).json({ message: 'Ошибка при создании заказа' });
   }
 };
 
-export const getOrdersByEmail = async (req: Request, res: Response) => {
+
+export const getMyOrders = async (req: AuthRequest, res: Response) => {
   try {
-    const { email } = req.params;
-    const orders = await Order.find({ userEmail: email });
-    res.status(200).send(orders);
+    const orders = await Order.find({ user: req.user!.id }).sort({ createdAt: -1 });
+    res.json(orders);
   } catch (error) {
-    res.status(500).send({ message: 'Ошибка при получении заказов' });
+    res.status(500).json({ message: 'Ошибка при получении заказов' });
   }
 };
-export const deleteOrderById = async (req: Request, res: Response) => {
-  try {
-    const { orderId } = req.params;
-    const deletedOrder = await Order.findByIdAndDelete(orderId);
 
-    if (!deletedOrder) {
-      return res.status(404).send({ message: 'Заказ не найден' });
+
+// Удаление заказа (только своего)
+export const deleteOrderById = async (req: AuthRequest, res: Response) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Не авторизован' });
     }
 
-    res.status(200).send({ message: 'Заказ успешно удалён', order: deletedOrder });
+    const { orderId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      return res.status(400).json({ message: 'Некорректный ID заказа' });
+    }
+
+    const order = await Order.findOne({ _id: orderId, user: req.user.id });
+
+    if (!order) {
+      return res.status(404).json({ message: 'Заказ не найден или нет доступа' });
+    }
+
+    await order.deleteOne();
+    res.status(200).json({ message: 'Заказ успешно удалён' });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({ message: 'Ошибка при удалении заказа' });
+    res.status(500).json({ message: 'Ошибка при удалении заказа' });
   }
 };
+

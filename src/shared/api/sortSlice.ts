@@ -1,14 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type Product = {
+export type Product = {
   title: string;
   newPrice: string;
   year: string;
+};
+
+export interface SortState {
+  label: string;
+  sortedProducts: Product[];
 }
 
-const initialState = {
+const initialState: SortState = {
   label: '',
-  sortedProducts: [] as Product[], // Update the type of sortedProducts
+  sortedProducts: [],
 };
 
 const sortSlice = createSlice({

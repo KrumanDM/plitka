@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { Header } from "shared/components/Header/Header";
 import s from "./Busket.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "store/store";
+import { AppDispatch, RootState } from "store/store.types";
 import {
   clearCart,
   incrementItem,
@@ -74,41 +74,35 @@ const Busket: FC<BusketPropsType> = () => {
   };
 
   const handleOrder = async () => {
-    if (name === "" || phone === "") {
-      if (name === "") {
-        setNameError(true);
-      } else {
-        setNameError(false);
-      }
-      if (phone === "") {
-        setPhoneError(true);
-      } else {
-        setPhoneError(false);
-      }
-      return;
+    setNameError(false);
+    setPhoneError(false);
+  
+    if (!name.trim()) {
+      setNameError(true);
     }
-
-    const userEmail = localStorage.getItem("userEmail");
+    if (!phone.trim()) {
+      setPhoneError(true);
+    }
+    if (!name.trim() || !phone.trim()) return;
+  
     const orderData = {
       items: cartItems,
       totalPrice: generalPrice,
-      userEmail: userEmail,
-      name: name,
-      phone: phone,
+      name,
+      phone,
     };
-
+  
     try {
-      const response = await dispatch(placeOrder(orderData)).unwrap();
+      await dispatch(placeOrder(orderData)).unwrap();
       setIsOrderSuccessModalOpen(true);
       handleClearCart();
-      setIsModalOpen(false); // Закрываем модальное окно после успешного оформления заказа
-      localStorage.removeItem("cart"); // Удаляем данные из localStorage
+      setIsModalOpen(false);
     } catch (error) {
       console.error("Ошибка:", error);
       alert("Произошла ошибка при оформлении заказа.");
     }
   };
-  console.log(cartItems)
+  
   return (
     <>
       <Header />

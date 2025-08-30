@@ -5,7 +5,7 @@ import orderRoutes from './routes/orderRoutes';
 import productRoutes from './routes/productRoutes';
 import { applySecurityMiddleware } from './securityMiddleware';
 import { corsMiddleware } from './corsMiddleware';
-
+ 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -25,6 +25,7 @@ mongoose
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/products', productRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

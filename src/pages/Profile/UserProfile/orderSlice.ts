@@ -3,10 +3,10 @@ import axios from 'axios';
 
 interface Order {
   _id: string;
-  // Другие поля заказа
+  // другие поля заказа
 }
 
-interface OrdersState {
+export interface OrdersState {
   orders: Order[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
@@ -18,11 +18,17 @@ const initialState: OrdersState = {
   error: null,
 };
 
+// Получить заказы текущего пользователя
 export const getOrders = createAsyncThunk(
   'orders/fetchOrders',
-  async (userEmail: string, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`http://localhost:5001/api/orders/${userEmail}`);
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:5001/api/orders', {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : '',
+        },
+      });
       return response.data;
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -34,11 +40,17 @@ export const getOrders = createAsyncThunk(
   }
 );
 
+// Удалить заказ
 export const deleteOrder = createAsyncThunk(
   'orders/deleteOrder',
   async (orderId: string, thunkAPI) => {
     try {
-      const response = await axios.delete(`http://localhost:5001/api/orders/${orderId}`);
+      const token = localStorage.getItem('token');
+      const response = await axios.delete(`http://localhost:5001/api/orders/${orderId}`, {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : '',
+        },
+      });
       return response.data;
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -55,28 +67,21 @@ const ordersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getOrders.pending, (state) => {
-      state.status = 'loading';
-    });
-    builder.addCase(getOrders.fulfilled, (state, action) => {
-      state.status = 'succeeded';
-      state.orders = action.payload;
-    });
-    builder.addCase(getOrders.rejected, (state, action) => {
-      state.status = 'failed';
-      state.error = action.payload as string | null;
-    });
-    builder.addCase(deleteOrder.pending, (state) => {
-      state.status = 'loading';
-    });
-    builder.addCase(deleteOrder.fulfilled, (state, action) => {
-      state.status = 'succeeded';
-      state.orders = state.orders.filter((order) => order._id !== action.payload._id);
-    });
-    builder.addCase(deleteOrder.rejected, (state, action) => {
-      state.status = 'failed';
-      state.error = action.payload as string | null;
-    });
+    builder
+      .addCase(getOrders.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.orders = action.payload;
+      })
+      .addCase(getOrders.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload as string | null;
+      })
+      .addCase(deleteOrder.fulfilled, (state, action) => {
+        state.orders = state.orders.filter((order) => order._id !== action.payload._id);
+      });
   },
 });
 

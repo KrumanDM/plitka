@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Footer } from "shared/components/Footer/Footer";
-import { AppDispatch, RootState } from "store/store";
+import { AppDispatch, RootState } from "store/store.types";
 import { Header } from "shared/components/Header/Header";
 import { deleteOrder, getOrders } from "./orderSlice";
 import s from "./UserProfile.module.css";
@@ -43,13 +43,10 @@ const UserProfile = () => {
   const isModalOpenForOrderId = (orderId: string) =>
     isModalOpenForOrder[orderId];
 
-  useEffect(() => {
-    const userEmail = localStorage.getItem("userEmail");
-    if (userEmail) {
-      dispatch(getOrders(userEmail));
-    }
-  }, [isOrderDeleted, dispatch]); //зависимость isOrderDeleted обновится если удалится товар и тогда перерисует обновлённые товары
-
+    useEffect(() => {
+      dispatch(getOrders());
+    }, [isOrderDeleted, dispatch]);
+    
   useEffect(() => {
     if (isOrderDeleted) {
       setIsOrderDeleted(false);

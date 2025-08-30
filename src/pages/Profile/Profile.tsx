@@ -8,9 +8,8 @@ import {
   registerUser ,
   loginUser ,
   checkUser ,
-  toggleLogin,
 } from "./authSlice";
-import { AppDispatch } from "store/store";
+import { AppDispatch } from "store/store.types";
 
 type AuthStateType = {
     isLogin: boolean;
@@ -50,7 +49,7 @@ const validate = (values: { email: string; password: string }) => {
   const [showErrorMessageReg, setShowErrorMessageReg] = useState(false);
   const [showErrorMessageLog, setShowErrorMessageLog] = useState(false);
   const [isLoginForm, setIsLoginForm] = useState(true);
-
+ 
   useEffect(() => {
     dispatch(checkUser ());
   }, [dispatch]);
