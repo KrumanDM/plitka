@@ -1,4 +1,3 @@
-// store/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import sizeReducer from './sizeSlice';
 import colorReducer from './colorSlice';

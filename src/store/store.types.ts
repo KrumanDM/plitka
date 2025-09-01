@@ -1,5 +1,4 @@
-// store/store.types.ts
-import type { Middleware, Action } from '@reduxjs/toolkit';
+import type { Middleware } from '@reduxjs/toolkit';
 import type { AuthState } from 'pages/Profile/authSlice';
 import type { OrdersState } from 'pages/Profile/UserProfile/orderSlice';
 import type { CartState } from './cartSlice';

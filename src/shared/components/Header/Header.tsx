@@ -140,47 +140,66 @@ export const Header = () => {
 
   const filteredResult = data ? filteredData(data, query) : [];
   return (
-    <div className={s.header}>
+    <header className={s.header}>
       <div className={s.headerContainer}>
         {isMobile ? (
           <>
             <MenuIcon className={s.burger} onClick={handleOpenMobileMenu} />
+
             {isMobileMenuOpen && (
-              <Sidebar onClickOutside={() => setIsMobileMenuOpen(false)} />
+              <aside>
+                <Sidebar onClickOutside={() => setIsMobileMenuOpen(false)} />
+              </aside>
             )}
           </>
         ) : (
-          <div className={s.storeContainer}>
+          <nav className={s.storeContainer}>
             <Clothing />
             <Accessories />
             <Skate />
-          </div>
+          </nav>
         )}
 
-        <a className={s.logo} href="/plitka">
+        <a className={s.logo} href="/plitka" aria-label="На главную">
           Plitka
         </a>
 
         <div className={s.userContainer}>
-          <div onClick={handleOpenSearch} className={s.searchContainer}>
+          <div
+            onClick={handleOpenSearch}
+            className={s.searchContainer}
+            aria-label="Поиск"
+          >
             <SearchIcon />
           </div>
-          <Link to="/news" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link
+            to="/news"
+            aria-label="Новости"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <ArticleOutlinedIcon />
           </Link>
           <div className={s.profile}>
-            <Link to="/profile" onClick={handleProfileClick}>
+            <Link
+              to="/profile"
+              aria-label="Личный профиль"
+              onClick={handleProfileClick}
+            >
               <AccountCircleIcon />
             </Link>
           </div>
           <div className={s.busket}>
-            <Link to="/busket">
+            <Link to="/busket" aria-label="Корзина">
               <ShoppingBasketOutlinedIcon />
             </Link>
           </div>
           <div className={s.result}>
             {isSearchOpen && (
-              <div className={s.SearchFormContainer} ref={searchFormRef}>
+              <div
+                className={s.SearchFormContainer}
+                ref={searchFormRef}
+                role="search"
+              >
                 <SearchForm
                   query={query}
                   handleInputChange={handleInputChange}
@@ -200,6 +219,6 @@ export const Header = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
