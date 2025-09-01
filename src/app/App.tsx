@@ -1,10 +1,10 @@
 import React from "react";
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "store/store";
+import { RootState } from "store/store.types";
 import s from "./App.module.css";
 import { PATH } from "routes/paths";
-import Site from "pages/Site/Site";
+import Site from "pages/Site/Site";``
 import Jackets from "pages/Clothing/Jackets/Jackets";
 import Hoodies from "pages/Clothing/Hoodies/Hoodies";
 import Socks from "pages/Accessories/Socks/Socks";

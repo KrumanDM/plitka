@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
 import { setColor } from "store/colorSlice";
-import { RootState } from "store/store";
+import { RootState } from "store/store.types";
 
 type ColorPropsType = {
   colors: string[];
