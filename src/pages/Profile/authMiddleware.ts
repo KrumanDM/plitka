@@ -1,8 +1,9 @@
+// authMiddleware.ts
 import { checkUser } from './authSlice';
-import type { AppMiddleware, AppDispatch, RootState } from 'store/store.types';
+import type { AppMiddleware } from 'store/store.types';
+import type { Action } from '@reduxjs/toolkit';
 
 let checkUserCalled = false;
-import type { Action } from '@reduxjs/toolkit';
 
 function isReduxAction(action: unknown): action is Action {
   return typeof action === 'object' && action !== null && 'type' in action;
@@ -24,6 +25,7 @@ const authMiddleware: AppMiddleware = (store) => (next) => (action) => {
       !checkUserCalled
     ) {
       checkUserCalled = true;
+      // ✅ Теперь dispatch принимает thunk без ошибок
       store.dispatch(checkUser());
     }
   }

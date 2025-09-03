@@ -1,4 +1,4 @@
-import type { Middleware } from '@reduxjs/toolkit';
+import type { Middleware, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
 import type { AuthState } from 'pages/Profile/authSlice';
 import type { OrdersState } from 'pages/Profile/UserProfile/orderSlice';
 import type { CartState } from './cartSlice';
@@ -17,6 +17,6 @@ export interface RootState {
   sort: SortState;
 }
 
-export type AppDispatch = (...args: any[]) => any;
+export type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
 
 export type AppMiddleware = Middleware<{}, RootState, AppDispatch>;
