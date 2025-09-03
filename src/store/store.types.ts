@@ -1,4 +1,4 @@
-import type { Middleware, Dispatch, UnknownAction } from '@reduxjs/toolkit';
+import type { Middleware, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
 import type { AuthState } from 'pages/Profile/authSlice';
 import type { OrdersState } from 'pages/Profile/UserProfile/orderSlice';
 import type { CartState } from './cartSlice';
@@ -17,5 +17,6 @@ export interface RootState {
   sort: SortState;
 }
 
-// Вместо AppDispatch из store — используем универсальный Dispatch<UnknownAction>
-export type AppMiddleware = Middleware<{}, RootState, Dispatch<UnknownAction>>;
+export type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
+
+export type AppMiddleware = Middleware<{}, RootState, AppDispatch>;
